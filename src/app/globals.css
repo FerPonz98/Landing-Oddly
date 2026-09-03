@@ -1,0 +1,31 @@
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #161329;
+  color: #FFFDF9;
+  font-family: 'Manrope', Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: #FFFDF9; text-decoration: none; }
+a:hover { color: #EA571A; }
+::selection { background: #EA571A; color: #FFFDF9; }
+body[data-hidecursor="1"], body[data-hidecursor="1"] * { cursor: none !important; }
+@media (prefers-reduced-motion: reduce) { * { transition-duration: .01ms !important; } }
+
+/* Hover states ported from the approved design (one rule per hover treatment). */
+[data-h="h1"]:hover { background-color:rgba(234,87,26,.12) !important; border-color:rgba(234,87,26,.9) !important; color:#EA571A !important }
+[data-h="h2"]:hover { transform:translateY(-2px) !important; background-color:#f2601f !important; color:#FFFDF9 !important }
+[data-h="h3"]:hover { border-color:rgba(255,253,249,.34) !important; color:#FFFDF9 !important }
+[data-h="h4"]:hover { background-color:rgba(34,39,80,.55) !important }
+[data-h="h5"]:hover { background-color:rgba(34,39,80,.55) !important }
+[data-h="h6"]:hover { background-color:rgba(34,39,80,.55) !important }
+[data-h="h7"]:hover { color:#FFFDF9 !important }
+[data-h="h8"]:hover { background-color:rgba(234,87,26,.12) !important; border-color:rgba(234,87,26,.9) !important; color:#EA571A !important }
+[data-h="h9"]:hover { transform:translateY(-2px) !important; background-color:#f2601f !important }
+[data-h="h10"]:hover { color:#FFFDF9 !important }
+[data-h="h11"]:hover { color:#FFFDF9 !important }
+[data-h="h12"]:hover { color:#FFFDF9 !important }
+[data-h="h13"]:hover { color:#FFFDF9 !important }
+[data-h="h14"]:hover { color:#FFFDF9 !important }
+[data-h="h15"]:hover { color:#FFFDF9 !important }
