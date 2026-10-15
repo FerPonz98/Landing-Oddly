@@ -1,136 +1,51 @@
-# Oddly Frontend
+# Oddly
 
-Landing de Oddly portada 1:1 desde la maqueta aprobada. Mismo diseño, mismos textos,
-mismas animaciones: sistema de nodos en Canvas 2D, narrativa de scroll (caos → señales →
-relaciones → patrón → sistema → adaptación → acción), sección de proceso sticky, cursor
-personalizado en desktop y formulario de contacto con validación.
-
-## Requisitos
-
-- Node.js 20 o superior
-- npm
-- Git
-
-## Clonar el repositorio
-
-```bash
-git clone https://github.com/FerPonz98/Landing-Oddly.git
-cd Landing-Oddly
-```
-
-## Instalación
-
-```bash
-npm install
-```
+Landing de la consultora de marketing Oddly: evaluación del negocio y recomendaciones personalizadas para mejorar ventas. Incluye tema claro inicial, selector de tema oscuro, preguntas frecuentes y contacto por WhatsApp.
 
 ## Desarrollo
 
+Node.js 20 o superior y npm.
+
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
 ```
 
-Abrir http://localhost:3000
+Abrir http://localhost:3000.
 
-## Build
+## Contacto
 
-```bash
-npm run build
-```
+El contacto predeterminado es **+591 69634466**. Para cambiarlo, configurar `NEXT_PUBLIC_WHATSAPP_NUMBER` con el código de país y número completo, sin espacios ni `+`. Los botones abrirán WhatsApp con un mensaje preparado. La landing no envía mensajes automáticamente.
 
-## Producción local
+Si se configura un número que no tiene entre 8 y 15 dígitos, los botones llevan a la sección de contacto, donde se indica que el canal aún no está disponible. No se simula ningún envío. Reiniciar desarrollo o recompilar producción después de cambiar el número.
 
-```bash
-npm run start
-```
+Al desplegar, configurar también `NEXT_PUBLIC_SITE_URL` con la URL pública para que las imágenes de Open Graph y Twitter apunten al dominio correcto. En desarrollo se usa `http://localhost:3000`.
 
-## Lint
+## Comprobaciones y producción
 
 ```bash
 npm run lint
+npx tsc --noEmit
+npm run build
+npm run start
 ```
 
-## Variables de entorno
+## Diseño y assets
 
-Copia `.env.example` a `.env.local`:
+- Next.js App Router y React; contenido renderizado en servidor, interacción de menú, tema y canvas en componentes de cliente.
+- Variables CSS para ambos temas. La preferencia se conserva localmente; una visita sin preferencia comienza en claro.
+- Manrope alojada localmente con `next/font/local`. Su licencia OFL está en `src/app/fonts/OFL.txt`.
+- Iconos de Phosphor. Logos suministrados en `public/logo`; sus derivados optimizados están en `public/brand`.
+- Favicon, icono Apple y preview al compartir generados del arte de marca original. Para regenerar derivados, ejecutar `node scripts/prepare-brand-assets.mjs`.
+- La escena orbital 3D proyecta anillos y satélites alrededor de la evaluación; responde al cursor y al scroll, con control de pausa que conserva su posición. Se detiene fuera del viewport, con la pestaña oculta o con movimiento reducido. Las entradas al recorrer la página ocurren una sola vez; el contenido sigue visible si falla JavaScript.
+- El proceso permite seleccionar cuatro etapas mediante clic, toque o teclado. La sección sigue el mismo fondo progresivo del resto de la página. El fondo evoluciona gradualmente hacia melocotón en claro y ciruela en oscuro; el logo blanco completo aparece sutilmente como marca de agua de fondo de la landing al acercarse al final.
+- Las superficies con inclinación y los botones con barrido de color responden al hover; el movimiento espacial se desactiva cuando se solicita movimiento reducido.
+- Estelas curvas decoran el fondo: al final alcanzan 72 trayectorias en escritorio y 40 en móvil, con rutas curvas precalculadas. No tienen control de pausa; se detienen al ocultar la pestaña y muestran curvas estáticas con movimiento reducido.
+- PRODUCT.md registra el servicio confirmado; DESIGN.md documenta el sistema visual.
 
-```bash
-cp .env.example .env.local
-```
+La ruta principal y las anclas `#top`, `#problema`, `#proceso`, `#proyectos`, `#estudio`, `#faq` y `#contacto` se conservan. `#proyectos` ahora corresponde a asesoría; `#asesoria` es un destino alternativo.
 
-| Variable | Uso |
-| --- | --- |
-| `NEXT_PUBLIC_API_URL` | Base del backend. Si está definida, el formulario hace `POST {API_URL}/api/contact`. |
-| `NEXT_PUBLIC_CONTACT_ENDPOINT` | Endpoint completo alternativo. Tiene prioridad sobre `NEXT_PUBLIC_API_URL`. |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Número para el CTA de contacto (solo dígitos, sin `+`). Vacío: el CTA apunta a `#contacto`. |
-| `NEXT_PUBLIC_PRIVACY_URL` | Ruta o URL de la política de privacidad usada por el checkbox. |
+## Idiomas
 
-Sin ninguna de las dos primeras variables, el formulario valida y confirma en local sin
-llamada de red. No hay secretos en el repositorio.
-
-## Estructura
-
-```
-oddly-frontend/
-├── public/
-│   └── logo/                   # variantes del logo (por fondo/uso)
-├── src/
-│   ├── app/
-│   │   ├── globals.css         # resets del diseño + reglas :hover portadas
-│   │   ├── layout.tsx          # metadata y carga de tipografías
-│   │   └── page.tsx            # renderiza <OddlyLanding />
-│   └── components/
-│       └── OddlyLanding.tsx    # la landing completa (markup + sistema de nodos)
-├── .env.example
-├── .eslintrc.json
-├── next.config.mjs
-├── package.json
-└── tsconfig.json
-```
-
-## Notas técnicas
-
-- `OddlyLanding.tsx` es un componente de cliente (`"use client"`). Su clase conserva el
-  sistema imperativo original (canvas, scroll, refs), por eso declara un index signature.
-- Las fuentes se cargan con `<link>` a Google Fonts en `layout.tsx` porque los estilos
-  inline referencian las familias por nombre literal.
-- Los estados `:hover` viven en `globals.css` como reglas `[data-h="..."]`, una por
-  tratamiento, generadas desde la maqueta.
-- Las áreas de proyectos y equipo son placeholders CSS a la espera de imágenes reales.
-- No se incluye `package-lock.json`; se generará con el primer `npm install`.
-
-## Qué se puede mejorar
-
-- **Favicon:** actualmente muestra el placeholder por defecto de Next.js. Reemplazar
-  `src/app/favicon.ico` por un ícono propio de Oddly (32x32 o 48x48 px).
-- **Organizar `public/logo`:** los archivos tienen nombres inconsistentes (mayúsculas,
-  espacios). Conviene renombrarlos a formato `logo-[variante].png` en minúsculas y
-  guiones, y dejar claro cuál se usa según el fondo (claro/oscuro/color).
-- **Tipografía:** revisar si conviene reemplazar la fuente actual por una con más
-  personalidad, manteniendo buena legibilidad en párrafos largos y compatibilidad con
-  IBM Plex Mono, que ya se usa para acentos.
-- **Migrar fuentes a `next/font/google`:** mejora performance y evita salto de layout
-  al cargar la página.
-- **Reemplazar placeholders CSS** de proyectos y equipo por imágenes reales.
-- **Meta tags de Open Graph / Twitter Card:** para que el link se vea bien al
-  compartirse (título, descripción, imagen de preview).
-- **Accesibilidad:** revisar contraste de color, tamaño mínimo de texto y navegación
-  por teclado en el formulario.
-- **Responsive:** confirmar que el sistema de nodos y el cursor personalizado (que solo
-  aplica en desktop) tengan un buen comportamiento en mobile.
-- **Estados de error y carga del formulario:** que el usuario reciba feedback claro
-  tanto si el envío fue exitoso como si falló.
-- **`.gitignore`:** confirmar que excluye `node_modules/`, `.next/` y `.env.local`.
-
-## Ideas creativas
-
-- **Modo oscuro/claro:** ya existen variantes de logo en distintos colores — se podría
-  explorar un tema alternable que cambie el aspecto del sistema de nodos.
-- **Micro-interacciones en el CTA de contacto:** una animación sutil de hover puede
-  reforzar la sensación de "sistema vivo" que ya sugiere el canvas de nodos.
-- **Variación de velocidad del scroll narrativo** según el tamaño de pantalla, para que
-  la secuencia caos → señales → relaciones → patrón → sistema → adaptación → acción no
-  se sienta larga en mobile.
-- **Sonido/feedback háptico opcional** en interacciones clave, muy sutil, coherente con
-  el concepto de "sistema" que conecta nodos.
-- **Página 404 personalizada** que continúe la estética del sistema de nodos.
+Español, inglés y portugués mediante un menú de idiomas en la cabecera. Muestra los nombres originales, marca el idioma activo y funciona con flechas, Home/End, búsqueda por inicial, Enter/Espacio y Escape. En móvil usa un botón compacto y un panel amplio. Sin JavaScript conserva los enlaces de idioma. URLs compartibles: `/?lang=es`, `/?lang=en`, `/?lang=pt`. La preferencia se conserva en la cookie `oddly-language` durante un año; una URL con idioma explícito tiene prioridad. Sin preferencia se usa español. Contenido renderizado en servidor, atributo `lang`, etiquetas accesibles, metadatos y mensajes de WhatsApp traducidos. Las traducciones tipadas están en `src/lib/i18n.ts`.

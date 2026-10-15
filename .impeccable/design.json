@@ -1,0 +1,593 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-11T23:58:51.883624+00:00",
+  "title": "Design System: Oddly",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Accent",
+        "tonalRamp": [
+          "oklch(15% 0.17761 39.02)",
+          "oklch(26.43% 0.17761 39.02)",
+          "oklch(37.86% 0.17761 39.02)",
+          "oklch(49.29% 0.17761 39.02)",
+          "oklch(60.71% 0.17761 39.02)",
+          "oklch(72.14% 0.17761 39.02)",
+          "oklch(83.57% 0.17761 39.02)",
+          "oklch(95% 0.17761 39.02)"
+        ]
+      },
+      "brand-orange": {
+        "role": "primary",
+        "displayName": "Brand Orange",
+        "tonalRamp": [
+          "oklch(15% 0.19351 39.42)",
+          "oklch(26.43% 0.19351 39.42)",
+          "oklch(37.86% 0.19351 39.42)",
+          "oklch(49.29% 0.19351 39.42)",
+          "oklch(60.71% 0.19351 39.42)",
+          "oklch(72.14% 0.19351 39.42)",
+          "oklch(83.57% 0.19351 39.42)",
+          "oklch(95% 0.19351 39.42)"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Background",
+        "tonalRamp": [
+          "oklch(15% 0.00569 84.57)",
+          "oklch(26.43% 0.00569 84.57)",
+          "oklch(37.86% 0.00569 84.57)",
+          "oklch(49.29% 0.00569 84.57)",
+          "oklch(60.71% 0.00569 84.57)",
+          "oklch(72.14% 0.00569 84.57)",
+          "oklch(83.57% 0.00569 84.57)",
+          "oklch(95% 0.00569 84.57)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Foreground",
+        "tonalRamp": [
+          "oklch(15% 0.04307 288.20)",
+          "oklch(26.43% 0.04307 288.20)",
+          "oklch(37.86% 0.04307 288.20)",
+          "oklch(49.29% 0.04307 288.20)",
+          "oklch(60.71% 0.04307 288.20)",
+          "oklch(72.14% 0.04307 288.20)",
+          "oklch(83.57% 0.04307 288.20)",
+          "oklch(95% 0.04307 288.20)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.02695 293.50)",
+          "oklch(26.43% 0.02695 293.50)",
+          "oklch(37.86% 0.02695 293.50)",
+          "oklch(49.29% 0.02695 293.50)",
+          "oklch(60.71% 0.02695 293.50)",
+          "oklch(72.14% 0.02695 293.50)",
+          "oklch(83.57% 0.02695 293.50)",
+          "oklch(95% 0.02695 293.50)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(15% 0.00575 84.57)",
+          "oklch(26.43% 0.00575 84.57)",
+          "oklch(37.86% 0.00575 84.57)",
+          "oklch(49.29% 0.00575 84.57)",
+          "oklch(60.71% 0.00575 84.57)",
+          "oklch(72.14% 0.00575 84.57)",
+          "oklch(83.57% 0.00575 84.57)",
+          "oklch(95% 0.00575 84.57)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0.00876 84.57)",
+          "oklch(26.43% 0.00876 84.57)",
+          "oklch(37.86% 0.00876 84.57)",
+          "oklch(49.29% 0.00876 84.57)",
+          "oklch(60.71% 0.00876 84.57)",
+          "oklch(72.14% 0.00876 84.57)",
+          "oklch(83.57% 0.00876 84.57)",
+          "oklch(95% 0.00876 84.57)"
+        ]
+      },
+      "button-text": {
+        "role": "neutral",
+        "displayName": "Button Text",
+        "tonalRamp": [
+          "oklch(15% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95% 0.00000 89.88)"
+        ]
+      },
+      "dark-accent": {
+        "role": "primary",
+        "displayName": "Dark Accent",
+        "tonalRamp": [
+          "oklch(15% 0.15523 42.79)",
+          "oklch(26.43% 0.15523 42.79)",
+          "oklch(37.86% 0.15523 42.79)",
+          "oklch(49.29% 0.15523 42.79)",
+          "oklch(60.71% 0.15523 42.79)",
+          "oklch(72.14% 0.15523 42.79)",
+          "oklch(83.57% 0.15523 42.79)",
+          "oklch(95% 0.15523 42.79)"
+        ]
+      },
+      "dark-background": {
+        "role": "neutral",
+        "displayName": "Dark Background",
+        "tonalRamp": [
+          "oklch(15% 0.04307 288.20)",
+          "oklch(26.43% 0.04307 288.20)",
+          "oklch(37.86% 0.04307 288.20)",
+          "oklch(49.29% 0.04307 288.20)",
+          "oklch(60.71% 0.04307 288.20)",
+          "oklch(72.14% 0.04307 288.20)",
+          "oklch(83.57% 0.04307 288.20)",
+          "oklch(95% 0.04307 288.20)"
+        ]
+      },
+      "dark-foreground": {
+        "role": "neutral",
+        "displayName": "Dark Foreground",
+        "tonalRamp": [
+          "oklch(15% 0.00569 84.57)",
+          "oklch(26.43% 0.00569 84.57)",
+          "oklch(37.86% 0.00569 84.57)",
+          "oklch(49.29% 0.00569 84.57)",
+          "oklch(60.71% 0.00569 84.57)",
+          "oklch(72.14% 0.00569 84.57)",
+          "oklch(83.57% 0.00569 84.57)",
+          "oklch(95% 0.00569 84.57)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Dark Muted",
+        "tonalRamp": [
+          "oklch(15% 0.02975 294.44)",
+          "oklch(26.43% 0.02975 294.44)",
+          "oklch(37.86% 0.02975 294.44)",
+          "oklch(49.29% 0.02975 294.44)",
+          "oklch(60.71% 0.02975 294.44)",
+          "oklch(72.14% 0.02975 294.44)",
+          "oklch(83.57% 0.02975 294.44)",
+          "oklch(95% 0.02975 294.44)"
+        ]
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "Dark Surface",
+        "tonalRamp": [
+          "oklch(15% 0.04499 288.37)",
+          "oklch(26.43% 0.04499 288.37)",
+          "oklch(37.86% 0.04499 288.37)",
+          "oklch(49.29% 0.04499 288.37)",
+          "oklch(60.71% 0.04499 288.37)",
+          "oklch(72.14% 0.04499 288.37)",
+          "oklch(83.57% 0.04499 288.37)",
+          "oklch(95% 0.04499 288.37)"
+        ]
+      },
+      "dark-line": {
+        "role": "neutral",
+        "displayName": "Dark Line",
+        "tonalRamp": [
+          "oklch(15% 0.04153 291.75)",
+          "oklch(26.43% 0.04153 291.75)",
+          "oklch(37.86% 0.04153 291.75)",
+          "oklch(49.29% 0.04153 291.75)",
+          "oklch(60.71% 0.04153 291.75)",
+          "oklch(72.14% 0.04153 291.75)",
+          "oklch(83.57% 0.04153 291.75)",
+          "oklch(95% 0.04153 291.75)"
+        ]
+      },
+      "dark-button-text": {
+        "role": "neutral",
+        "displayName": "Dark Button Text",
+        "tonalRamp": [
+          "oklch(15% 0.04307 288.20)",
+          "oklch(26.43% 0.04307 288.20)",
+          "oklch(37.86% 0.04307 288.20)",
+          "oklch(49.29% 0.04307 288.20)",
+          "oklch(60.71% 0.04307 288.20)",
+          "oklch(72.14% 0.04307 288.20)",
+          "oklch(83.57% 0.04307 288.20)",
+          "oklch(95% 0.04307 288.20)"
+        ]
+      },
+      "core-highlight": {
+        "role": "primary",
+        "displayName": "Core Highlight",
+        "tonalRamp": [
+          "oklch(15% 0.14609 48.42)",
+          "oklch(26.43% 0.14609 48.42)",
+          "oklch(37.86% 0.14609 48.42)",
+          "oklch(49.29% 0.14609 48.42)",
+          "oklch(60.71% 0.14609 48.42)",
+          "oklch(72.14% 0.14609 48.42)",
+          "oklch(83.57% 0.14609 48.42)",
+          "oklch(95% 0.14609 48.42)"
+        ]
+      },
+      "core-shade": {
+        "role": "primary",
+        "displayName": "Core Shade",
+        "tonalRamp": [
+          "oklch(15% 0.12822 40.05)",
+          "oklch(26.43% 0.12822 40.05)",
+          "oklch(37.86% 0.12822 40.05)",
+          "oklch(49.29% 0.12822 40.05)",
+          "oklch(60.71% 0.12822 40.05)",
+          "oklch(72.14% 0.12822 40.05)",
+          "oklch(83.57% 0.12822 40.05)",
+          "oklch(95% 0.12822 40.05)"
+        ]
+      },
+      "evolved-background": {
+        "role": "neutral",
+        "displayName": "Evolved Background",
+        "tonalRamp": [
+          "oklch(15% 0.03315 63.04)",
+          "oklch(26.43% 0.03315 63.04)",
+          "oklch(37.86% 0.03315 63.04)",
+          "oklch(49.29% 0.03315 63.04)",
+          "oklch(60.71% 0.03315 63.04)",
+          "oklch(72.14% 0.03315 63.04)",
+          "oklch(83.57% 0.03315 63.04)",
+          "oklch(95% 0.03315 63.04)"
+        ]
+      },
+      "dark-evolved-background": {
+        "role": "neutral",
+        "displayName": "Dark Evolved Background",
+        "tonalRamp": [
+          "oklch(15% 0.04525 316.53)",
+          "oklch(26.43% 0.04525 316.53)",
+          "oklch(37.86% 0.04525 316.53)",
+          "oklch(49.29% 0.04525 316.53)",
+          "oklch(60.71% 0.04525 316.53)",
+          "oklch(72.14% 0.04525 316.53)",
+          "oklch(83.57% 0.04525 316.53)",
+          "oklch(95% 0.04525 316.53)"
+        ]
+      },
+      "core-orange": {
+        "role": "primary",
+        "displayName": "Core Orange",
+        "tonalRamp": [
+          "oklch(15% 0.16082 42.63)",
+          "oklch(26.43% 0.16082 42.63)",
+          "oklch(37.86% 0.16082 42.63)",
+          "oklch(49.29% 0.16082 42.63)",
+          "oklch(60.71% 0.16082 42.63)",
+          "oklch(72.14% 0.16082 42.63)",
+          "oklch(83.57% 0.16082 42.63)",
+          "oklch(95% 0.16082 42.63)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero statement."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "List and process headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs and explanatory text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Actions and process numbers."
+      }
+    },
+    "shadows": [
+      {
+        "name": "language-popover",
+        "value": "0 12px 32px rgba(22,19,41,.14)",
+        "purpose": "Separate the temporary language panel from page content."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.23,1,.32,1)",
+        "purpose": "CSS control movement."
+      },
+      {
+        "name": "reveal-ease",
+        "value": "cubic-bezier(.22,1,.36,1)",
+        "purpose": "One-time WAAPI entrances."
+      },
+      {
+        "name": "reveal-duration",
+        "value": "650ms",
+        "purpose": "Observed content entrance."
+      },
+      {
+        "name": "reveal-stagger",
+        "value": "60ms; maximum 180ms",
+        "purpose": "Sibling entrance spacing."
+      },
+      {
+        "name": "reveal-offset",
+        "value": "22px",
+        "purpose": "Vertical entrance distance."
+      },
+      {
+        "name": "control-press",
+        "value": "140ms",
+        "purpose": "Button active movement."
+      },
+      {
+        "name": "control-color",
+        "value": "160ms ease",
+        "purpose": "Color and border changes."
+      },
+      {
+        "name": "menu-enter",
+        "value": "180ms",
+        "purpose": "Mobile menu entrance."
+      },
+      {
+        "name": "answer-enter",
+        "value": "200ms ease-out",
+        "purpose": "Native disclosure answer entrance."
+      },
+      {
+        "name": "directional-hover",
+        "value": "220ms",
+        "purpose": "Arrow and row movement."
+      },
+      {
+        "name": "pointer-easing",
+        "value": "0.065 per frame",
+        "purpose": "Canvas yaw/pitch response to mouse input."
+      },
+      {
+        "name": "signal-flow",
+        "value": "0.2 cycles/s",
+        "purpose": "Incoming business signals."
+      },
+      {
+        "name": "orbital-yaw",
+        "value": "0.17 radians/s",
+        "purpose": "Base orbital rotation."
+      },
+      {
+        "name": "satellite-motion",
+        "value": "0.24 / -0.18 radians/s",
+        "purpose": "Depth-scaled orbiting satellites."
+      },
+      {
+        "name": "tilt-response",
+        "value": "400ms cubic-bezier(.23,1,.32,1)",
+        "purpose": "Mouse-driven container tilt and reset."
+      },
+      {
+        "name": "button-wipe",
+        "value": "300ms cubic-bezier(.23,1,.32,1)",
+        "purpose": "Foreground wipe on hover and focus."
+      },
+      {
+        "name": "process-enter",
+        "value": "400ms cubic-bezier(.23,1,.32,1)",
+        "purpose": "Stage copy enters from 14px and rotateX(-5deg)."
+      },
+      {
+        "name": "contact-circle",
+        "value": "700ms cubic-bezier(.23,1,.32,1)",
+        "purpose": "Accent outline circle expands on hover/focus within."
+      },
+      {
+        "name": "hero-scroll-offset",
+        "value": "0.13 × scrollY; maximum 65px",
+        "purpose": "Desktop hero translation."
+      },
+      {
+        "name": "page-background",
+        "value": "250ms ease",
+        "purpose": "Continuous document-scroll background mixing and text color transition."
+      },
+      {
+        "name": "trail-intensity",
+        "value": ".03 + progress^1.2 × .4",
+        "purpose": "Curved background presence grows with scroll."
+      },
+      {
+        "name": "trail-head-speed",
+        "value": ".065 + index × .003 cycles/s",
+        "purpose": "Moving heads on cubic edge curves."
+      },
+      {
+        "name": "trail-top-threshold",
+        "value": "1% document scroll",
+        "purpose": "Suspend continuous trail frames at or below this scroll progress."
+      },
+      {
+        "name": "trail-count",
+        "value": "baseline × (1 + 3 × progress^1.2)",
+        "purpose": "10/18 initial trails grow to 40/72 trails at document end; full routes are cached on resize."
+      },
+      {
+        "name": "watermark-emergence",
+        "value": "clamp((progress - .58) / .42) × .18",
+        "purpose": "Complete white background wordmark emerges after 58% scroll as a fixed layer below content; dark image opacity multiplies by .55."
+      },
+      {
+        "name": "language-enter",
+        "value": "180ms cubic-bezier(.23,1,.32,1)",
+        "purpose": "Pointer-open language panel entrance; suppressed for keyboard opening and reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-display-min",
+        "value": "1450px"
+      },
+      {
+        "name": "compact-desktop-max",
+        "value": "1100px"
+      },
+      {
+        "name": "menu-and-compact-process-max",
+        "value": "1000px"
+      },
+      {
+        "name": "mobile-max",
+        "value": "700px"
+      },
+      {
+        "name": "small-mobile-max",
+        "value": "360px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Contact action using the active semantic theme.",
+      "html": "<a href=\"#contacto\" class=\"ds-component ds-button\"><span>Hablemos de tu empresa</span><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;background:var(--accent);color:var(--button-text);padding:18px 22px;min-height:56px;border:1px solid transparent;font-family:var(--font-manrope),sans-serif;font-size:14px;font-weight:600;line-height:1.4;text-decoration:none;cursor:pointer;transition:transform 140ms var(--ease-out),background 160ms ease,border-color 160ms ease}.ds-button:active{transform:scale(.98)}@media(hover:hover) and (pointer:fine){.ds-button:hover{transform:translateY(-2px)}.ds-button:hover svg{transform:translate(2px,-2px)}}@media(prefers-reduced-motion:reduce){.ds-button,.ds-button svg{transition:none}.ds-button:hover,.ds-button:hover svg{transform:none}}.ds-component:focus-visible{outline:2px solid var(--accent);outline-offset:5px}.ds-button{position:relative;isolation:isolate;overflow:hidden}.ds-button::before{content:\"\";position:absolute;z-index:-1;inset:0;background:var(--foreground);transform:translateY(102%);transition:transform 300ms var(--ease-out)}.ds-button:focus-visible{color:var(--background)}.ds-button:focus-visible::before{transform:translateY(0)}@media(hover:hover) and (pointer:fine){.ds-button:hover{color:var(--background);transform:translateY(-3px)}.ds-button:hover::before{transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.ds-button::before{transition:none}.ds-button:hover{transform:none}}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Contact action using the active semantic theme.",
+      "html": "<a href=\"#contacto\" class=\"ds-component ds-button\"><span>Hablemos de tu empresa</span><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;background:var(--accent);color:var(--button-text);padding:18px 22px;min-height:56px;border:1px solid transparent;font-family:var(--font-manrope),sans-serif;font-size:14px;font-weight:600;line-height:1.4;text-decoration:none;cursor:pointer;transition:transform 140ms var(--ease-out),background 160ms ease,border-color 160ms ease}.ds-button:active{transform:scale(.98)}@media(hover:hover) and (pointer:fine){.ds-button:hover{transform:translateY(-2px)}.ds-button:hover svg{transform:translate(2px,-2px)}}@media(prefers-reduced-motion:reduce){.ds-button,.ds-button svg{transition:none}.ds-button:hover,.ds-button:hover svg{transform:none}}.ds-component:focus-visible{outline:2px solid var(--accent);outline-offset:5px}.ds-button{background:transparent;border-color:var(--line);color:var(--foreground)}.ds-button:hover{border-color:var(--foreground)}.ds-button{position:relative;isolation:isolate;overflow:hidden}.ds-button::before{content:\"\";position:absolute;z-index:-1;inset:0;background:var(--foreground);transform:translateY(102%);transition:transform 300ms var(--ease-out)}.ds-button:focus-visible{color:var(--background)}.ds-button:focus-visible::before{transform:translateY(0)}@media(hover:hover) and (pointer:fine){.ds-button:hover{color:var(--background);transform:translateY(-3px)}.ds-button:hover::before{transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.ds-button::before{transition:none}.ds-button:hover{transform:none}}"
+    },
+    {
+      "name": "Disabled Button",
+      "kind": "button",
+      "refersTo": "button-disabled",
+      "description": "Truthful unavailable-contact state when the configured WhatsApp number is invalid.",
+      "html": "<button class=\"ds-component ds-button\" disabled>WhatsApp no disponible</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;background:var(--accent);color:var(--button-text);padding:18px 22px;min-height:56px;border:1px solid transparent;font-family:var(--font-manrope),sans-serif;font-size:14px;font-weight:600;line-height:1.4;text-decoration:none;cursor:pointer;transition:transform 140ms var(--ease-out),background 160ms ease,border-color 160ms ease}.ds-button:active{transform:scale(.98)}@media(hover:hover) and (pointer:fine){.ds-button:hover{transform:translateY(-2px)}.ds-button:hover svg{transform:translate(2px,-2px)}}@media(prefers-reduced-motion:reduce){.ds-button,.ds-button svg{transition:none}.ds-button:hover,.ds-button:hover svg{transform:none}}.ds-component:focus-visible{outline:2px solid var(--accent);outline-offset:5px}.ds-button:disabled{background:var(--line);color:var(--muted);cursor:not-allowed;transform:none}.ds-button{position:relative;isolation:isolate;overflow:hidden}.ds-button::before{content:\"\";position:absolute;z-index:-1;inset:0;background:var(--foreground);transform:translateY(102%);transition:transform 300ms var(--ease-out)}.ds-button:focus-visible{color:var(--background)}.ds-button:focus-visible::before{transform:translateY(0)}@media(hover:hover) and (pointer:fine){.ds-button:hover{color:var(--background);transform:translateY(-3px)}.ds-button:hover::before{transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.ds-button::before{transition:none}.ds-button:hover{transform:none}}"
+    },
+    {
+      "name": "Circular Control",
+      "kind": "button",
+      "refersTo": "icon-button",
+      "description": "Circular theme or motion control with a visible keyboard target.",
+      "html": "<button class=\"ds-component ds-icon\" aria-label=\"Activar tema oscuro\"><svg width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M21 14A9 9 0 0 1 10 3a9 9 0 1 0 11 11Z\"/></svg></button>",
+      "css": ".ds-icon{display:grid;place-items:center;background:transparent;border:1px solid var(--line);color:var(--foreground);height:44px;width:44px;border-radius:50%;cursor:pointer;transition:border-color 160ms ease,background 160ms ease}.ds-icon:hover{background:var(--surface);border-color:var(--foreground)}.ds-icon:active{transform:scale(.98)}.ds-component:focus-visible{outline:2px solid var(--accent);outline-offset:5px}"
+    },
+    {
+      "name": "Navigation Links",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Fine-rule navigation with a pill-shaped language disclosure shared by desktop and mobile.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navegación\"><a class=\"ds-component\" href=\"#problema\">Enfoque</a><a class=\"ds-component\" href=\"#proceso\">Proceso</a><a class=\"ds-component\" href=\"#faq\">Preguntas</a><details class=\"ds-language-picker\"><summary class=\"ds-language-trigger\" aria-label=\"Cambiar idioma: Español\" aria-haspopup=\"menu\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><ellipse cx=\"12\" cy=\"12\" rx=\"4\" ry=\"9\"/><path d=\"M3 12h18\"/></svg><span class=\"ds-language-trigger__name\" lang=\"es\">Español</span><span class=\"ds-language-trigger__code\">ES</span><svg class=\"ds-language-trigger__caret\" width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m3 6 5 5 5-5\"/></svg></summary><div class=\"ds-language-panel\"><p class=\"ds-language-panel__title\">Elige tu idioma</p><div class=\"ds-language-options\" role=\"menu\" aria-label=\"Idioma\"><a class=\"ds-language-option\" href=\"/?lang=es\" hreflang=\"es\" role=\"menuitemradio\" aria-checked=\"true\"><span class=\"ds-language-option__text\"><span class=\"ds-language-option__name\" lang=\"es\">Español</span><span class=\"ds-language-option__description\">Idioma actual</span></span><span class=\"ds-language-option__mark\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m4 10 4 4 8-8\"/></svg></span></a><a class=\"ds-language-option\" href=\"/?lang=en\" hreflang=\"en\" role=\"menuitemradio\" aria-checked=\"false\"><span class=\"ds-language-option__text\"><span class=\"ds-language-option__name\" lang=\"en\">English</span><span class=\"ds-language-option__description\">Inglés</span></span><span class=\"ds-language-option__mark\">EN</span></a><a class=\"ds-language-option\" href=\"/?lang=pt\" hreflang=\"pt\" role=\"menuitemradio\" aria-checked=\"false\"><span class=\"ds-language-option__text\"><span class=\"ds-language-option__name\" lang=\"pt\">Português</span><span class=\"ds-language-option__description\">Portugués</span></span><span class=\"ds-language-option__mark\">PT</span></a></div><p class=\"ds-language-panel__note\">Tu elección se guarda.</p></div></details></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:30px;min-height:80px;background:var(--page-background);border-bottom:1px solid var(--line);font-family:var(--font-manrope),sans-serif;font-size:13px;font-weight:500;color:var(--foreground)}.ds-nav > a{padding-block:12px;color:inherit;text-decoration:none;transition:color 160ms ease}.ds-nav > a:hover{color:var(--accent);text-decoration:underline;text-underline-offset:.5em}.ds-component:focus-visible{outline:2px solid var(--accent);outline-offset:5px} .ds-language-picker{font-family:var(--font-manrope),sans-serif}.ds-language-picker p{margin:0}.ds-language-option{color:inherit;text-decoration:none}.ds-language-trigger:focus-visible,.ds-language-option:focus-visible{outline:2px solid var(--accent);outline-offset:5px} .ds-language-picker { position:relative; }\n.ds-language-trigger { display:flex; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:10px 14px; border:1px solid var(--line); border-radius:24px; color:var(--foreground); background:transparent; cursor:pointer; list-style:none; font-size:12px; font-weight:500; user-select:none; transition:background-color 160ms ease,border-color 160ms ease,transform 140ms var(--ease-out); }\n.ds-language-trigger::-webkit-details-marker { display:none; }\n.ds-language-trigger svg { flex-shrink:0; }\n.ds-language-trigger:active { transform:scale(.97); }\n.ds-language-trigger__code { display:none; }\n.ds-language-trigger__caret { color:var(--muted); transition:transform 180ms var(--ease-out); }\n.ds-language-picker[open] .ds-language-trigger__caret { transform:rotate(180deg); }\n.ds-language-picker[open] .ds-language-trigger { background:var(--surface); border-color:var(--accent); }\n.ds-language-panel { position:absolute; z-index:30; right:0; top:calc(100% + 12px); width:256px; padding:12px; background:var(--background); border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 32px rgba(22,19,41,.14); transform-origin:top right; animation:language-enter 180ms var(--ease-out); }\n.ds-language-picker:not([open]) .ds-language-panel { display:none; }\n.ds-language-panel__title { padding:4px 10px 12px; color:var(--foreground); font-size:13px; font-weight:600; line-height:1.5; }\n.ds-language-options { display:grid; gap:4px; }\n.ds-language-option { display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:64px; padding:12px; border-radius:8px; transition:background-color 160ms ease; }\n.ds-language-option__text { display:grid; gap:3px; }\n.ds-language-option__name { color:var(--foreground); font-size:14px; font-weight:500; line-height:1.4; }\n.ds-language-option__description { color:var(--muted); font-size:11px; line-height:1.4; }\n.ds-language-option__mark { display:grid; place-items:center; width:24px; color:var(--muted); font-size:10px; font-weight:600; }\n.ds-language-option[aria-checked='true'] { background:color-mix(in srgb,var(--background) 90%,var(--accent) 10%); }\n.ds-language-option[aria-checked='true'] .ds-language-option__mark { color:var(--accent); }\n.ds-language-option:focus-visible { outline-offset:-2px; }\n.ds-language-panel__note { margin-top:12px; padding:12px 10px 3px; border-top:1px solid var(--line); font-size:11px; line-height:1.5; }\n@keyframes language-enter { from { opacity:0; transform:translateY(-5px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }\n@media (hover:hover) and (pointer:fine) { .ds-language-trigger:hover { background:var(--surface); border-color:var(--foreground); } .ds-language-option:hover { background:var(--surface); } }\n@media (max-width:700px) {\n .ds-language-trigger { gap:6px; padding:10px; }\n .ds-language-trigger__name { display:none; }\n .ds-language-trigger__code { display:block; font-size:11px; }\n .ds-language-panel { position:fixed; top:86px; left:20px; right:20px; width:auto; transform-origin:top center; }\n}\n\n.ds-language-picker[data-keyboard='true'] .ds-language-panel { animation:none; }\n.ds-language-picker[data-keyboard='true'] .ds-language-trigger__caret { transition:none; }\n@media(prefers-reduced-motion:reduce){.ds-language-panel{animation:none}.ds-language-trigger,.ds-language-trigger__caret,.ds-language-option{transition:none}}.ds-nav>.ds-language-picker{margin-left:auto}@media(max-width:1100px){.ds-nav{gap:18px}}@media(max-width:700px){.ds-nav{gap:10px}}"
+    },
+    {
+      "name": "Statement Panel",
+      "kind": "card",
+      "refersTo": "statement-panel",
+      "description": "Page-derived tonal statement with a decorative four-category context map.",
+      "html": "<div class=\"ds-statement\"><div class=\"ds-map\" aria-hidden=\"true\"><svg viewBox=\"0 0 320 190\"><ellipse cx=\"160\" cy=\"95\" rx=\"118\" ry=\"64\"/><ellipse cx=\"160\" cy=\"95\" rx=\"74\" ry=\"40\"/><path d=\"M42 95H278M160 31V159\"/></svg><span class=\"ds-map-center\"><svg viewBox=\"0 0 34 34\"><circle cx=\"17\" cy=\"17\" r=\"12\"/><circle cx=\"17\" cy=\"17\" r=\"7\"/><circle cx=\"17\" cy=\"17\" r=\"2\"/></svg>Tu empresa</span><span class=\"ds-map-label ds-map-top\">Objetivos</span><span class=\"ds-map-label ds-map-left\">Negocio</span><span class=\"ds-map-label ds-map-right\">Clientes</span><span class=\"ds-map-label ds-map-bottom\">Canales</span></div><span class=\"ds-rule\"></span><p>Una buena estrategia<br>empieza por entender<br><strong>tu empresa.</strong></p></div>",
+      "css": ".ds-statement{background:color-mix(in srgb,var(--page-background) 80%,var(--foreground) 4%);padding:30px 40px 48px;display:flex;flex-direction:column;justify-content:space-between;min-height:370px;font-family:var(--font-manrope),sans-serif}.ds-rule{width:65px;height:1px;background:var(--accent)}.ds-statement p{font-size:clamp(23px,2.3vw,32px);line-height:1.4;letter-spacing:-.03em;color:var(--foreground);margin:0}.ds-statement strong{font-weight:500;color:var(--accent)}.ds-statement{position:relative;isolation:isolate;overflow:clip;transform-style:preserve-3d;transition:transform 400ms var(--ease-out),background-color 350ms ease}.ds-statement p{transform:translateZ(30px)}.ds-rule{width:100%;height:2px;transform-origin:left}@media(hover:hover) and (pointer:fine){.ds-statement:hover{background:color-mix(in srgb,var(--page-background) 87%,var(--accent) 13%)}}.ds-statement{gap:26px}.ds-map{position:relative;min-height:210px;width:100%;max-width:340px;margin-inline:auto}.ds-map>svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:var(--accent);stroke-width:.8;opacity:.35}.ds-map-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;font-size:12px;color:var(--foreground)}.ds-map-center svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1}.ds-map-label{position:absolute;font-size:11px;background:var(--page-background);color:var(--muted);padding:4px 8px}.ds-map-top{top:8%;left:50%;transform:translateX(-50%)}.ds-map-bottom{bottom:8%;left:50%;transform:translateX(-50%)}.ds-map-left{left:0;top:50%;transform:translateY(-50%)}.ds-map-right{right:0;top:50%;transform:translateY(-50%)}@media(max-width:700px){.ds-map{min-height:190px}.ds-statement{padding:26px}}"
+    },
+    {
+      "name": "FAQ Disclosure",
+      "kind": "custom",
+      "refersTo": "faq-disclosure",
+      "description": "Native disclosure with a fine rule and accent open state.",
+      "html": "<details class=\"ds-faq\"><summary class=\"ds-component\">¿Oddly también ejecuta las campañas?<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" stroke=\"currentColor\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 8h12\"/><path class=\"ds-plus\" d=\"M8 2v12\"/></svg></summary><p>Nuestro servicio se centra en la asesoría.</p></details>",
+      "css": ".ds-faq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--font-manrope),sans-serif;color:var(--foreground)}.ds-faq summary{display:flex;align-items:center;justify-content:space-between;gap:26px;padding-block:26px;font-size:17px;font-weight:500;line-height:1.5;list-style:none;cursor:pointer}.ds-faq summary::-webkit-details-marker{display:none}.ds-faq[open] summary{color:var(--accent)}.ds-faq[open] .ds-plus{display:none}.ds-faq p{color:var(--muted);font-size:14px;line-height:1.75;padding:0 35px 28px 0;margin:0}.ds-component:focus-visible{outline:2px solid var(--accent);outline-offset:5px}.ds-faq summary{transition:color 200ms ease,transform 250ms var(--ease-out)}@media(hover:hover) and (pointer:fine){.ds-faq summary:hover{color:var(--accent);transform:translateX(5px)}}@media(prefers-reduced-motion:reduce){.ds-faq summary{transition:none}.ds-faq summary:hover{transform:none}}"
+    },
+    {
+      "name": "Process Explorer",
+      "kind": "custom",
+      "refersTo": "process-panel",
+      "description": "Four selectable stages beside a tonal panel; this standalone native-radio preview shows selection without a framework runtime.",
+      "html": "<div class=\"ds-process\"><input class=\"ds-choice ds-component\" type=\"radio\" name=\"oddly-stage\" id=\"ds-stage-0\" checked><label class=\"ds-tab\" for=\"ds-stage-0\"><small>01</small>Conocemos tu empresa</label><section class=\"ds-panel\"><span class=\"ds-number\">01</span><h3>¿Qué quieres conseguir con tu negocio?</h3><p>Empezamos por tu negocio y tus objetivos de ventas.</p></section><input class=\"ds-choice ds-component\" type=\"radio\" name=\"oddly-stage\" id=\"ds-stage-1\"><label class=\"ds-tab\" for=\"ds-stage-1\"><small>02</small>Evaluamos tu situación</label><section class=\"ds-panel\"><span class=\"ds-number\">02</span><h3>¿Qué está frenando tus oportunidades de venta?</h3><p>Revisamos cómo conectas con tus clientes.</p></section><input class=\"ds-choice ds-component\" type=\"radio\" name=\"oddly-stage\" id=\"ds-stage-2\"><label class=\"ds-tab\" for=\"ds-stage-2\"><small>03</small>Identificamos oportunidades</label><section class=\"ds-panel\"><span class=\"ds-number\">03</span><h3>¿Dónde puede marcar la diferencia tu marketing?</h3><p>Distinguimos dónde enfocar tus esfuerzos.</p></section><input class=\"ds-choice ds-component\" type=\"radio\" name=\"oddly-stage\" id=\"ds-stage-3\"><label class=\"ds-tab\" for=\"ds-stage-3\"><small>04</small>Recomendamos una estrategia</label><section class=\"ds-panel\"><span class=\"ds-number\">04</span><h3>¿Cuál es el siguiente paso que tiene sentido para ti?</h3><p>Recomendaciones adaptadas a la realidad de tu empresa.</p></section></div>",
+      "css": ".ds-process{display:grid;grid-template-columns:1fr 1.1fr;gap:0 64px;font-family:var(--font-manrope),sans-serif;color:var(--foreground)}.ds-choice{position:absolute;opacity:0;width:1px;height:1px}.ds-tab{grid-column:1;padding:24px 18px;min-height:48px;display:flex;align-items:center;gap:20px;border-top:1px solid var(--line);font-size:18px;cursor:pointer;transition:background-color 220ms ease,color 220ms ease,transform 220ms var(--ease-out)}.ds-tab small{font-size:12px}.ds-choice:checked+.ds-tab{background:var(--accent);color:var(--button-text)}.ds-choice:focus-visible+.ds-tab{outline:2px solid var(--accent);outline-offset:5px}.ds-panel{display:none;position:relative;overflow:hidden;grid-column:2;grid-row:1/5;min-height:312px;padding:44px;background:color-mix(in srgb,var(--page-background) 80%,var(--foreground) 4%);perspective:900px}.ds-choice:checked+.ds-tab+.ds-panel{display:flex;flex-direction:column;justify-content:flex-end}.ds-number{position:absolute;right:28px;top:-35px;font-size:200px;line-height:1.2;letter-spacing:-.04em;color:var(--accent);opacity:.16;transform:rotateY(-25deg) rotateZ(-7deg)}.ds-panel h3{position:relative;font-size:clamp(24px,2.5vw,36px);line-height:1.2;max-width:18ch;margin:100px 0 20px}.ds-panel p{position:relative;font-size:15px;line-height:1.75;color:var(--muted);margin:0;max-width:42ch}@media(hover:hover) and (pointer:fine){.ds-choice:not(:checked)+.ds-tab:hover{background:var(--surface);transform:translateX(5px)}}@media(max-width:700px){.ds-process{grid-template-columns:1fr 1fr;gap:10px}.ds-tab{grid-column:auto;min-height:73px;padding:16px;font-size:14px;border:1px solid var(--line)}.ds-panel{grid-column:1/-1;grid-row:3;min-height:294px;padding:28px}.ds-panel h3{font-size:29px}.ds-number{font-size:170px;top:-25px}}@media(prefers-reduced-motion:reduce){.ds-tab{transition:none}.ds-tab:hover{transform:none}}.ds-component:focus-visible{outline:2px solid var(--accent);outline-offset:5px}"
+    },
+    {
+      "name": "Contact Panel",
+      "kind": "card",
+      "refersTo": "contact-panel",
+      "description": "Contact surface blends the evolving page background with 13% accent.",
+      "html": "<section class=\"ds-contact\"><h2>El siguiente paso empieza<br>por conocer tu empresa.</h2><p>Empecemos una conversación sobre tu negocio.</p></section>",
+      "css": ".ds-contact{position:relative;isolation:isolate;overflow:hidden;background:color-mix(in srgb,var(--page-background) 87%,var(--accent) 13%);color:var(--foreground);padding:64px;font-family:var(--font-manrope),sans-serif;transition:background-color 350ms ease}.ds-contact h2{font-size:clamp(30px,3vw,44px);font-weight:500;line-height:1.12;letter-spacing:-.035em;margin:0}.ds-contact p{font-size:14px;line-height:1.75;color:var(--muted);margin:22px 0 0;max-width:48ch}.ds-contact::before{content:\"\";position:absolute;z-index:-1;width:500px;height:500px;right:-310px;top:-290px;border:1px solid var(--accent);border-radius:50%;transition:transform 700ms var(--ease-out);pointer-events:none}.ds-contact:focus-within::before{transform:scale(2)}@media(hover:hover) and (pointer:fine){.ds-contact:hover::before{transform:scale(2)}}@media(max-width:1100px){.ds-contact{padding:40px}}@media(max-width:700px){.ds-contact{padding:30px 24px}.ds-contact h2{font-size:29px}}@media(prefers-reduced-motion:reduce){.ds-contact{transition:none}.ds-contact::before{display:none}}"
+    },
+    {
+      "name": "Language Picker",
+      "kind": "custom",
+      "refersTo": "language-trigger",
+      "description": "Native disclosure with three language links, current-language check and localized preference reminder.",
+      "html": "<details class=\"ds-language-picker\"><summary class=\"ds-language-trigger\" aria-label=\"Cambiar idioma: Español\" aria-haspopup=\"menu\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><ellipse cx=\"12\" cy=\"12\" rx=\"4\" ry=\"9\"/><path d=\"M3 12h18\"/></svg><span class=\"ds-language-trigger__name\" lang=\"es\">Español</span><span class=\"ds-language-trigger__code\">ES</span><svg class=\"ds-language-trigger__caret\" width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m3 6 5 5 5-5\"/></svg></summary><div class=\"ds-language-panel\"><p class=\"ds-language-panel__title\">Elige tu idioma</p><div class=\"ds-language-options\" role=\"menu\" aria-label=\"Idioma\"><a class=\"ds-language-option\" href=\"/?lang=es\" hreflang=\"es\" role=\"menuitemradio\" aria-checked=\"true\"><span class=\"ds-language-option__text\"><span class=\"ds-language-option__name\" lang=\"es\">Español</span><span class=\"ds-language-option__description\">Idioma actual</span></span><span class=\"ds-language-option__mark\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m4 10 4 4 8-8\"/></svg></span></a><a class=\"ds-language-option\" href=\"/?lang=en\" hreflang=\"en\" role=\"menuitemradio\" aria-checked=\"false\"><span class=\"ds-language-option__text\"><span class=\"ds-language-option__name\" lang=\"en\">English</span><span class=\"ds-language-option__description\">Inglés</span></span><span class=\"ds-language-option__mark\">EN</span></a><a class=\"ds-language-option\" href=\"/?lang=pt\" hreflang=\"pt\" role=\"menuitemradio\" aria-checked=\"false\"><span class=\"ds-language-option__text\"><span class=\"ds-language-option__name\" lang=\"pt\">Português</span><span class=\"ds-language-option__description\">Portugués</span></span><span class=\"ds-language-option__mark\">PT</span></a></div><p class=\"ds-language-panel__note\">Tu elección se guarda.</p></div></details>",
+      "css": " .ds-language-picker{font-family:var(--font-manrope),sans-serif}.ds-language-picker p{margin:0}.ds-language-option{color:inherit;text-decoration:none}.ds-language-trigger:focus-visible,.ds-language-option:focus-visible{outline:2px solid var(--accent);outline-offset:5px} .ds-language-picker { position:relative; }\n.ds-language-trigger { display:flex; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:10px 14px; border:1px solid var(--line); border-radius:24px; color:var(--foreground); background:transparent; cursor:pointer; list-style:none; font-size:12px; font-weight:500; user-select:none; transition:background-color 160ms ease,border-color 160ms ease,transform 140ms var(--ease-out); }\n.ds-language-trigger::-webkit-details-marker { display:none; }\n.ds-language-trigger svg { flex-shrink:0; }\n.ds-language-trigger:active { transform:scale(.97); }\n.ds-language-trigger__code { display:none; }\n.ds-language-trigger__caret { color:var(--muted); transition:transform 180ms var(--ease-out); }\n.ds-language-picker[open] .ds-language-trigger__caret { transform:rotate(180deg); }\n.ds-language-picker[open] .ds-language-trigger { background:var(--surface); border-color:var(--accent); }\n.ds-language-panel { position:absolute; z-index:30; right:0; top:calc(100% + 12px); width:256px; padding:12px; background:var(--background); border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 32px rgba(22,19,41,.14); transform-origin:top right; animation:language-enter 180ms var(--ease-out); }\n.ds-language-picker:not([open]) .ds-language-panel { display:none; }\n.ds-language-panel__title { padding:4px 10px 12px; color:var(--foreground); font-size:13px; font-weight:600; line-height:1.5; }\n.ds-language-options { display:grid; gap:4px; }\n.ds-language-option { display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:64px; padding:12px; border-radius:8px; transition:background-color 160ms ease; }\n.ds-language-option__text { display:grid; gap:3px; }\n.ds-language-option__name { color:var(--foreground); font-size:14px; font-weight:500; line-height:1.4; }\n.ds-language-option__description { color:var(--muted); font-size:11px; line-height:1.4; }\n.ds-language-option__mark { display:grid; place-items:center; width:24px; color:var(--muted); font-size:10px; font-weight:600; }\n.ds-language-option[aria-checked='true'] { background:color-mix(in srgb,var(--background) 90%,var(--accent) 10%); }\n.ds-language-option[aria-checked='true'] .ds-language-option__mark { color:var(--accent); }\n.ds-language-option:focus-visible { outline-offset:-2px; }\n.ds-language-panel__note { margin-top:12px; padding:12px 10px 3px; border-top:1px solid var(--line); font-size:11px; line-height:1.5; }\n@keyframes language-enter { from { opacity:0; transform:translateY(-5px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }\n@media (hover:hover) and (pointer:fine) { .ds-language-trigger:hover { background:var(--surface); border-color:var(--foreground); } .ds-language-option:hover { background:var(--surface); } }\n@media (max-width:700px) {\n .ds-language-trigger { gap:6px; padding:10px; }\n .ds-language-trigger__name { display:none; }\n .ds-language-trigger__code { display:block; font-size:11px; }\n .ds-language-panel { position:fixed; top:86px; left:20px; right:20px; width:auto; transform-origin:top center; }\n}\n\n.ds-language-picker[data-keyboard='true'] .ds-language-panel { animation:none; }\n.ds-language-picker[data-keyboard='true'] .ds-language-trigger__caret { transition:none; }\n@media(prefers-reduced-motion:reduce){.ds-language-panel{animation:none}.ds-language-trigger,.ds-language-trigger__caret,.ds-language-option{transition:none}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The connected evaluation",
+    "overview": "Oddly combines supplied script artwork, deep blue ink, orange emphasis and generous Manrope typography. Fine rules and flat tonal surfaces organize the content without competing with the brand. The perspective-projected orbital visual gives the system a recognizable language of evaluation and connection, with a matte orange core and depth-scaled satellites.\n\nLight is the initial theme. An explicit dark choice persists in local storage and is applied before hydration. Scroll-driven rotation, perspective tilt, continuous background evolution and hover feedback make relationships visible while preserving readable content, the native cursor and user control.",
+    "keyCharacteristics": [
+      "Supplied Oddly artwork with optimized derivatives.",
+      "One local font family, spacious headings and concise labels.",
+      "Flat surfaces, fine rules and orange emphasis in two themes.",
+      "Orbital 3D motion, growing curved trails and pointer tilt with a diagram pause control and reduced-motion support."
+    ],
+    "rules": [
+      {
+        "name": "The Theme Pair Rule",
+        "body": "Resolve each semantic color through the active theme; keep the supplied orange artwork distinct from the accessible interface accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Local Voice Rule",
+        "body": "Use the locally hosted Manrope family for both display and body; use the supplied artwork for the Oddly wordmark.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Separate page regions with tonal surfaces and fine rules; reserve the existing soft shadow for the language popover.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve the supplied Oddly artwork and its light/dark logo variants.",
+      "Do apply semantic theme colors to text, rules, controls and the canvas.",
+      "Do keep visible keyboard focus and native FAQ disclosure behavior.",
+      "Do stop the diagram when paused, offscreen, hidden or reduced motion is requested."
+    ],
+    "donts": [
+      "Don't redraw the wordmark or replace it with typeset text.",
+      "Don't add fabricated client logos, testimonials, metrics or dashboard data.",
+      "Don't make readable content depend on entrance animation or JavaScript.",
+      "Don't replace the native cursor or remove the diagram pause control."
+    ]
+  }
+}
