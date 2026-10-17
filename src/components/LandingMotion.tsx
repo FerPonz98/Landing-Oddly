@@ -7,24 +7,39 @@ export default function LandingMotion() {
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const animations = new Set<Animation>();
-    const selectors = '.hero__copy > *, .hero__visual, .hero__closing, .section-heading, .assessment-list > div, .process-tabs, .process-panel, .advisory__intro, .advisory__outcomes > *, .faq__heading, .faq__items > details, .contact__inner';
+    const reveals = new WeakMap<Element, Animation>();
+    const selectors = '.hero__copy > *, .hero__visual > *, .hero__closing, .section-heading, .approach__statement, .assessment-list > div, .process-tabs, .process-panel, .advisory__intro, .advisory__outcomes > *, .faq__heading, .faq__items > details, .contact__inner, .footer > *';
+    const hidden = (above: boolean) => ({ opacity: 0, translate: `0 ${above ? -24 : 24}px` });
+    const shown = { opacity: 1, translate: '0 0' };
+    // Elements enter and leave on every pass, from the side of the viewport they crossed.
+    const reveal = (element: Element, visible: boolean, above: boolean, instant = false) => {
+      const previous = reveals.get(element);
+      const from = previous ? undefined : (visible ? hidden(above) : shown);
+      if (previous) { previous.commitStyles(); previous.cancel(); animations.delete(previous); }
+      const siblings = Array.from(element.parentElement?.children || []);
+      const delay = visible && !instant ? Math.min(siblings.indexOf(element), 3) * 60 : 0;
+      const target = visible ? shown : hidden(above);
+      const animation = element.animate(from ? [from, target] : [target], { duration: instant ? 0 : visible ? 650 : 450, delay, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' });
+      reveals.set(element, animation);
+      animations.add(animation);
+    };
+    let initial = true;
     const observer = new IntersectionObserver(entries => {
+      if (reduced.matches) { initial = false; return; }
       for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        observer.unobserve(entry.target);
-        if (reduced.matches) continue;
-        const element = entry.target as HTMLElement;
-        const siblings = Array.from(element.parentElement?.children || []);
-        const delay = Math.min(siblings.indexOf(element), 3) * 60;
-        const animation = element.animate([
-          { opacity: 0, transform: 'translateY(22px)' },
-          { opacity: 1, transform: 'translateY(0)' },
-        ], { duration: 650, delay, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
-        animations.add(animation);
-        animation.finished.then(() => animations.delete(animation)).catch(() => animations.delete(animation));
+        const above = entry.boundingClientRect.top < (entry.rootBounds?.top ?? 0);
+        if (initial && !entry.isIntersecting) reveal(entry.target, false, above, true);
+        else if (entry.isIntersecting || reveals.has(entry.target)) reveal(entry.target, entry.isIntersecting, above);
       }
+      initial = false;
     }, { threshold: .12 });
-    document.querySelectorAll(selectors).forEach(element => observer.observe(element));
+    const revealElements = Array.from(document.querySelectorAll<HTMLElement>(selectors));
+    revealElements.forEach(element => observer.observe(element));
+    const clearReveals = () => {
+      animations.forEach(animation => animation.cancel());
+      animations.clear();
+      revealElements.forEach(element => { reveals.delete(element); element.style.opacity = ''; element.style.translate = ''; });
+    };
     const tiltElements = Array.from(document.querySelectorAll<HTMLElement>('[data-tilt]'));
     const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
     const tiltHandlers = tiltElements.map(element => {
@@ -41,7 +56,7 @@ export default function LandingMotion() {
     });
     const stopMotion = () => {
       if (reduced.matches) {
-        animations.forEach(animation => animation.cancel());
+        clearReveals();
         tiltElements.forEach(element => { element.style.transform = ''; });
       }
       schedule();
@@ -73,7 +88,7 @@ export default function LandingMotion() {
     return () => {
       tiltHandlers.forEach(cleanup => cleanup());
       document.documentElement.style.removeProperty('--scroll-evolution');
-      observer.disconnect(); animations.forEach(animation => animation.cancel());
+      observer.disconnect(); clearReveals();
       reduced.removeEventListener('change', stopMotion);
       window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule);
       cancelAnimationFrame(frame);

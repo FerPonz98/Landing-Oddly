@@ -2,7 +2,7 @@
 :root[data-theme='dark'] { color-scheme:dark; --background:#161329; --foreground:#fffdf9; --muted:#bab6cb; --surface:#201d35; --line:#3b374f; --accent:#fa8655; --button-text:#161329; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:100px; }
-body { margin:0; background:var(--background); color:var(--foreground); font-family:var(--font-manrope),sans-serif; -webkit-font-smoothing:antialiased; }
+body { margin:0; background:var(--background); color:var(--foreground); font-family:var(--font-barlow),sans-serif; -webkit-font-smoothing:antialiased; }
 button,input { font:inherit; }
 button,a { -webkit-tap-highlight-color:transparent; }
 a { color:inherit; text-decoration:none; text-underline-offset:.25em; }
@@ -132,7 +132,7 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
 .contact__channel { display:flex; align-items:center; gap:9px; margin-top:16px; font-size:12px; color:var(--muted); }
 .contact .contact__notice { font-size:12px; margin-top:14px; }
 .footer { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:50px; padding-block:24px 30px; border-top:1px solid var(--line); }
-.brand-logo--footer { width:90px; height:63px; }
+.brand-symbol { display:block; width:56px; aspect-ratio:360/267; background:var(--foreground); -webkit-mask:url(/brand/oddly-symbol.webp) center/contain no-repeat; mask:url(/brand/oddly-symbol.webp) center/contain no-repeat; transition:background-color 200ms ease; }
 .footer p { font-size:13px; }
 .footer small { grid-column:1/-1; border-top:1px solid var(--line); padding-top:22px; font-size:12px; color:var(--muted); }
 @media (hover:hover) and (pointer:fine) {
@@ -299,7 +299,9 @@ main,.footer { position:relative; z-index:1; }
   .process-tabs button > svg { width:18px; height:18px; }
   .process-panel { min-height:350px; padding:28px; }
   .process-panel h3 { font-size:29px; }
-  .process-panel__number { font-size:170px; top:-25px; }
+  .process-panel { flex-direction:column; align-items:flex-start; justify-content:flex-end; }
+  .process-panel__number { position:static; font-size:96px; line-height:1; margin-bottom:12px; transform:none; }
+  .process-panel__copy { padding-top:0; }
   .hero__visual { translate:none !important; }
 }
 @media (prefers-reduced-motion:reduce) {
@@ -369,3 +371,9 @@ html[lang='en'] .hero h1 { font-size:clamp(38px,4.85vw,71px); }
 
 .language-picker[data-keyboard='true'] .language-panel { animation:none; }
 .language-picker[data-keyboard='true'] .language-trigger__caret { transition:none; }
+
+/* Merienda marks the emphasis words; Barlow carries everything else. */
+.hero h1 em,.approach__statement strong { font-family:var(--font-merienda),cursive; letter-spacing:-.01em; }
+/* Light mode keeps the secondary CTA on the brand orange. */
+:root:not([data-theme='dark']) .button--outline { background:var(--accent); border-color:transparent; color:var(--button-text); }
+@media (hover:hover) and (pointer:fine) { .footer a:hover .brand-symbol { background:var(--accent); } }

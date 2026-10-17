@@ -24,30 +24,30 @@ colors:
   core-orange: "#cf5b25"
 typography:
   display:
-    fontFamily: "Manrope, sans-serif"
+    fontFamily: "Barlow, sans-serif"
     fontSize: "clamp(40px,5.05vw,74px)"
     fontWeight: 500
     lineHeight: 1.13
     letterSpacing: "-.04em"
   headline:
-    fontFamily: "Manrope, sans-serif"
+    fontFamily: "Barlow, sans-serif"
     fontSize: "clamp(34px,4vw,56px)"
     fontWeight: 500
     lineHeight: 1.12
     letterSpacing: "-.035em"
   title:
-    fontFamily: "Manrope, sans-serif"
+    fontFamily: "Barlow, sans-serif"
     fontSize: "20px"
     fontWeight: 500
     lineHeight: 1.4
     letterSpacing: "-.02em"
   body:
-    fontFamily: "Manrope, sans-serif"
+    fontFamily: "Barlow, sans-serif"
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.75
   label:
-    fontFamily: "Manrope, sans-serif"
+    fontFamily: "Barlow, sans-serif"
     fontSize: "13px"
     fontWeight: 600
 rounded:
@@ -129,14 +129,14 @@ components:
 
 **Creative North Star: "The connected evaluation"**
 
-Oddly combines supplied script artwork, deep blue ink, orange emphasis and generous Manrope typography. Fine rules and flat tonal surfaces organize the content without competing with the brand. The perspective-projected orbital visual gives the system a recognizable language of evaluation and connection, with a matte orange core and depth-scaled satellites.
+Oddly combines supplied script artwork, deep blue ink, orange emphasis and generous Barlow typography with Merienda script accents. Fine rules and flat tonal surfaces organize the content without competing with the brand. The perspective-projected orbital visual gives the system a recognizable language of evaluation and connection, with a matte orange core and depth-scaled satellites.
 
 Light is the initial theme. An explicit dark choice persists in local storage and is applied before hydration. Scroll-driven rotation, perspective tilt, continuous background evolution and hover feedback make relationships visible while preserving readable content, the native cursor and user control.
 
 **Key Characteristics:**
 
 - Supplied Oddly artwork with optimized derivatives.
-- One local font family, spacious headings and concise labels.
+- Barlow for structure, Merienda reserved for emphasis words, spacious headings and concise labels.
 - Flat surfaces, fine rules and orange emphasis in two themes.
 - Orbital 3D motion, growing curved trails and pointer tilt with a diagram pause control and reduced-motion support.
 
@@ -167,10 +167,10 @@ The process section is transparent and inherits the evolving page palette. Its p
 
 ## Typography
 
-**Display Font:** Manrope, with sans-serif fallback.  
-**Body Font:** Manrope, with sans-serif fallback.
+**Primary Font:** Barlow, with sans-serif fallback.  
+**Accent Font:** Merienda, with cursive fallback, only on emphasis words (hero "vender mejor.", approach "tu empresa.").
 
-Local regular, medium, semibold and bold files supply weights (400, 500, 600, 700), loaded through `next/font/local` with `display: swap`. Medium headings retain an open, conversational character; semibold labels signal actions without uppercase decoration.
+Both load from Google Fonts through `next/font/google` with `display: swap`; Barlow at 400, 500, 600 and 700. Medium headings retain an open, conversational character; semibold labels signal actions without uppercase decoration.
 
 ### Hierarchy
 
@@ -180,9 +180,9 @@ Local regular, medium, semibold and bold files supply weights (400, 500, 600, 70
 - **Body:** the frontmatter role serves paragraphs. Hero description is (17px), becoming (15px) on mobile. Supporting lists and FAQ answers use (14px). Typical paragraph measures range from (44ch) to (53ch).
 - **Label:** the frontmatter role serves actions and process numbers. Navigation is medium (500). Diagram and ancillary labels use (12px), with tabular process numerals.
 
-Spanish and Portuguese use the base display ramp. English overrides the hero to `clamp(38px,4.85vw,71px)`, then `clamp(29px,8.2vw,49px)` at (700px), and (28px) at (360px). All three languages use the same local Manrope weights, heading hierarchy and semantic palette; localized wording determines these measured display-fit adjustments.
+Spanish and Portuguese use the base display ramp. English overrides the hero to `clamp(38px,4.85vw,71px)`, then `clamp(29px,8.2vw,49px)` at (700px), and (28px) at (360px). All three languages use the same Barlow weights, heading hierarchy and semantic palette; localized wording determines these measured display-fit adjustments.
 
-**The Local Voice Rule.** Use the locally hosted Manrope family for both display and body; use the supplied artwork for the Oddly wordmark.
+**The Voice Rule.** Use Barlow for display and body and keep Merienda to single emphasis words; use the supplied artwork for the Oddly wordmark.
 
 ## Layout
 

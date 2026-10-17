@@ -1,17 +1,10 @@
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { resolveLocale } from '@/lib/i18n';
-import localFont from 'next/font/local';
+import { Barlow, Merienda } from 'next/font/google';
 import './globals.css';
-const manrope = localFont({
-  src: [
-    { path: './fonts/manrope-regular.ttf', weight: '400', style: 'normal' },
-    { path: './fonts/manrope-medium.ttf', weight: '500', style: 'normal' },
-    { path: './fonts/manrope-semibold.ttf', weight: '600', style: 'normal' },
-    { path: './fonts/manrope-bold.ttf', weight: '700', style: 'normal' },
-  ],
-  variable: '--font-manrope', display: 'swap',
-});
+const barlow = Barlow({ subsets: ['latin', 'latin-ext'], weight: ['400', '500', '600', '700'], variable: '--font-barlow', display: 'swap' });
+const merienda = Merienda({ subsets: ['latin', 'latin-ext'], weight: ['400', '600', '700'], variable: '--font-merienda', display: 'swap' });
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: 'Oddly | Consultoría de marketing para mejorar tus ventas',
@@ -22,5 +15,5 @@ export const metadata: Metadata = {
 const themeScript = `(function(){try{var t=localStorage.getItem('oddly-theme');document.documentElement.dataset.theme=t==='dark'?'dark':'light'}catch(e){document.documentElement.dataset.theme='light'}})()`;
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = resolveLocale((await headers()).get('x-oddly-locale'));
-  return <html lang={locale} data-theme="light" className={manrope.variable} suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head><body>{children}</body></html>;
+  return <html lang={locale} data-theme="light" className={`${barlow.variable} ${merienda.variable}`} suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head><body>{children}</body></html>;
 }

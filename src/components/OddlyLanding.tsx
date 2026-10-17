@@ -9,10 +9,10 @@ import ProcessExplorer from './ProcessExplorer';
 import BackgroundTrails from './BackgroundTrails';
 
 
-export function BrandLogo({ footer = false }: { footer?: boolean }) {
-  return <span className={`brand-logo${footer ? ' brand-logo--footer' : ''}`}>
-    <Image className="brand-logo__dark" src="/brand/oddly-dark.webp" alt="Oddly" width={600} height={420} priority={!footer} />
-    <Image className="brand-logo__light" src="/brand/oddly-light.webp" alt="Oddly" width={600} height={420} priority={!footer} />
+export function BrandLogo() {
+  return <span className="brand-logo">
+    <Image className="brand-logo__dark" src="/brand/oddly-dark.webp" alt="Oddly" width={600} height={420} priority />
+    <Image className="brand-logo__light" src="/brand/oddly-light.webp" alt="Oddly" width={600} height={420} priority />
   </span>;
 }
 function ContactAction({ secondary = false, locale, href: whatsappHref }: { secondary?: boolean; locale: Locale; href?: string }) {
@@ -74,6 +74,6 @@ export default function OddlyLanding({ locale }: { locale: Locale }) {
       <section className="faq section-shell section-space" id="faq" aria-labelledby="faq-title"><div className="faq__heading"><h2 id="faq-title">{t('Hablemos')}<br />{t('con claridad.')}</h2><p>{t('Algunas preguntas antes de empezar.')}</p></div><div className="faq__items">{faqs.map(item => <details key={t(item.question)}><summary>{t(item.question)}<span className="faq__toggle" aria-hidden="true"><Plus className="faq__plus" size={16} /><Minus className="faq__minus" size={16} /></span></summary><p>{t(item.answer)}</p></details>)}</div></section>
       <section className="contact section-shell" id="contacto" aria-labelledby="contact-title"><div className="contact__inner"><div><h2 id="contact-title">{t('El siguiente paso empieza')}<br />{t('por conocer tu empresa.')}</h2><p>{t('Cuéntanos qué quieres mejorar. Empecemos una conversación sobre tu negocio y tus objetivos de ventas.')}</p></div><div className="contact__action">{whatsappHref ? <><ContactAction locale={locale} href={whatsappHref} /><span className="contact__channel"><WhatsappLogo size={18} aria-hidden="true" />{t('Conversemos por WhatsApp')}</span></> : <><button className="button" disabled>{t('WhatsApp no disponible')}<WhatsappLogo size={20} aria-hidden="true" /></button><p className="contact__notice">{t('Nuestro canal de contacto estará disponible próximamente.')}</p></>}</div></div></section>
     </main>
-    <footer className="footer section-shell"><a href="#top" aria-label={t('Oddly, volver al inicio')}><BrandLogo footer /></a><p>{t('Una estrategia pensada para tu negocio.')}</p><a className="text-link" href="#top">{t('Volver arriba')}<ArrowUpRight size={18} aria-hidden="true" /></a><small>© {new Date().getFullYear()} Oddly</small></footer>
+    <footer className="footer section-shell"><a href="#top" aria-label={t('Oddly, volver al inicio')}><span className="brand-symbol" aria-hidden="true" /></a><p>{t('Una estrategia pensada para tu negocio.')}</p><a className="text-link" href="#top">{t('Volver arriba')}<ArrowUpRight size={18} aria-hidden="true" /></a><small>© {new Date().getFullYear()} Oddly</small></footer>
   </>;
 }
