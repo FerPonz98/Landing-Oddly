@@ -55,7 +55,6 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
 .text-link { display:inline-flex; align-items:center; gap:12px; font-size:13px; font-weight:600; padding-block:12px; transition:color 160ms ease; }
 .hero__visual { align-self:center; min-width:0; }
 .reading-progress { position:fixed; top:0; left:0; z-index:25; width:100%; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:left; pointer-events:none; }
-.motion-toggle { position:absolute; right:0; bottom:0; width:44px; height:44px; display:grid; place-items:center; border:1px solid var(--line); border-radius:50%; background:var(--background); color:var(--muted); }
 .strategy-visual__label,.strategy-visual__diagnosis,.strategy-visual figcaption { pointer-events:none; }
 .button svg,.text-link svg,.header__contact svg { transition:transform 220ms var(--ease-out); }
 .assessment-list > div,.advisory__outcomes > div { transition:transform 220ms var(--ease-out); }
@@ -140,7 +139,6 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
   .text-link:hover svg { transform:translateX(4px); }
   .assessment-list > div:hover,.advisory__outcomes > div:hover { transform:translateX(5px); }
   .process__steps li:hover::before,.header__links a:hover::after { transform:scaleX(1); }
-  .motion-toggle:hover { color:var(--accent); border-color:var(--accent); }
   .header__links a:hover,.text-link:hover { color:var(--accent); }
   .button:hover { transform:translateY(-2px); }
   .button--outline:hover { border-color:var(--foreground); }
@@ -232,7 +230,6 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
   *,*::before,*::after { animation:none !important; transition:none !important; }
   .button:hover { transform:none; }
   .button:hover svg,.header__contact:hover svg,.text-link:hover svg,.assessment-list > div:hover,.advisory__outcomes > div:hover { transform:none; }
-  .motion-toggle { display:none; }
 }
 
 /* A connected, dimensional motion system: orbit → evaluation → direction. */

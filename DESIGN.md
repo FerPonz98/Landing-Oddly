@@ -138,7 +138,7 @@ Light is the initial theme. An explicit dark choice persists in local storage an
 - Supplied Oddly artwork with optimized derivatives.
 - Barlow for structure, Merienda reserved for emphasis words, spacious headings and concise labels.
 - Flat surfaces, fine rules and orange emphasis in two themes.
-- Orbital 3D motion, growing curved trails and pointer tilt with a diagram pause control and reduced-motion support.
+- Orbital 3D motion, growing curved trails and pointer tilt with reduced-motion support.
 
 ## Colors
 
@@ -252,7 +252,7 @@ The desktop panel has minimum height (400px), padding (44px) and a translucent o
 
 Four labeled inputs feed a perspective-projected orbital system. Three rotating great circles, twelve depth-scaled satellites and a matte orange sphere replace the earlier flat center and pulse. Canvas projection uses a perspective factor (3.6), with a radius proportional to the smaller dimension (.28). Base yaw advances at (.17 radians/s); satellites advance at (.24 / -.18 radians/s). Signals travel inward at (.2 cycles/s).
 
-Mouse movement eases yaw/pitch toward a small orientation offset (.065 per frame). Scroll adds rotation, capped at (1.5) viewport heights. A named pause/resume control exposes pressed state and preserves accumulated animation time and orientation; resuming continues from that state. Continuous animation stops when paused, offscreen, the tab is hidden, or reduced motion is requested. Reduced motion renders a static projection. Theme and resize changes redraw it; device pixel ratio is capped at (2). The native cursor remains visible.
+Mouse movement eases yaw/pitch toward a small orientation offset (.065 per frame). Scroll adds rotation, capped at (1.5) viewport heights. The diagram has no pause UI, per the user's explicit direction. Continuous animation stops when offscreen, the tab is hidden, or reduced motion is requested. Reduced motion renders a static projection. Theme and resize changes redraw it; device pixel ratio is capped at (2). The native cursor remains visible.
 
 ### Curved background trails
 
@@ -278,7 +278,7 @@ The former about content is removed. An empty, decorative `#estudio` anchor pres
 
 WAAPI reveals observed content once with a (22px) upward entrance, (650ms) duration and `cubic-bezier(.22,1,.36,1)` easing. Sibling delay is (60ms), capped at (180ms). Content remains visible before JavaScript and after animation. Reduced motion skips reveals and cancels active ones. A decorative (2px) top progress rule follows document scroll through a scheduled animation frame. The same frame updates the root continuous scroll evolution percentage and background-watermark opacity. The hero shifts vertically with scroll (.13), capped at (65px) and suppressed on mobile. The statement rule grows from (.25) to (1) scale as it enters view.
 
-CSS control transitions use `--ease-out` (`cubic-bezier(.23,1,.32,1)`) for movement, with (140–700ms) durations. Body/header background and text changes transition over (250ms); process surfaces transition over (650ms); tilt resets over (400ms). Reduced motion removes CSS animations, transitions, smooth scrolling and hover transforms, and hides the unnecessary diagram pause control. It also resets pointer tilt and hero translation, suppresses stage-change animation and removes the contact circle. Scroll background evolution and watermark opacity remain available with transitions removed.
+CSS control transitions use `--ease-out` (`cubic-bezier(.23,1,.32,1)`) for movement, with (140–700ms) durations. Body/header background and text changes transition over (250ms); process surfaces transition over (650ms); tilt resets over (400ms). Reduced motion removes CSS animations, transitions, smooth scrolling and hover transforms. It also resets pointer tilt and hero translation, suppresses stage-change animation and removes the contact circle. Scroll background evolution and watermark opacity remain available with transitions removed.
 
 ## Do's and Don'ts
 
@@ -287,11 +287,11 @@ CSS control transitions use `--ease-out` (`cubic-bezier(.23,1,.32,1)`) for movem
 - **Do** preserve the supplied Oddly artwork and its light/dark logo variants.
 - **Do** apply semantic theme colors to text, rules, controls and the canvas.
 - **Do** keep visible keyboard focus and native FAQ disclosure behavior.
-- **Do** stop the diagram when paused, offscreen, hidden or reduced motion is requested.
+- **Do** stop the diagram when offscreen, hidden or reduced motion is requested.
 
 ### Don't:
 
 - **Don't** redraw the wordmark or replace it with typeset text.
 - **Don't** add fabricated client logos, testimonials, metrics or dashboard data.
 - **Don't** make readable content depend on entrance animation or JavaScript.
-- **Don't** replace the native cursor or remove the diagram pause control.
+- **Don't** replace the native cursor.

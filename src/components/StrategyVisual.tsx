@@ -1,14 +1,10 @@
 'use client';
 import { getTranslator, type Locale } from '@/lib/i18n';
-import { useEffect, useRef, useState } from 'react';
-import { Pause, Play } from '@phosphor-icons/react';
+import { useEffect, useRef } from 'react';
 
 export default function StrategyVisual({ locale }: { locale: Locale }) {
   const t = getTranslator(locale);
   const canvas = useRef<HTMLCanvasElement>(null);
-  const pauseRef = useRef(false);
-  const refreshRef = useRef<() => void>(() => {});
-  const [paused, setPaused] = useState(false);
   useEffect(() => {
     const element = canvas.current;
     if (!element) return;
@@ -26,7 +22,7 @@ export default function StrategyVisual({ locale }: { locale: Locale }) {
       background = style.getPropertyValue('--background').trim();
     };
     const draw = (time: number) => {
-      const moving = !reduced.matches && !pauseRef.current;
+      const moving = !reduced.matches;
       if (moving && previous) elapsed += Math.min(time - previous, 40) / 1000;
       previous = time;
       if (moving) { pointerX += (targetX - pointerX) * .065; pointerY += (targetY - pointerY) * .065; }
@@ -86,7 +82,6 @@ export default function StrategyVisual({ locale }: { locale: Locale }) {
       if (moving && visible && !document.hidden) frame = requestAnimationFrame(draw);
     };
     const refresh = () => { cancelAnimationFrame(frame); previous = 0; colors(); draw(performance.now()); };
-    refreshRef.current = refresh;
     const resize = new ResizeObserver(() => {
       width = element.clientWidth; height = element.clientHeight; ratio = Math.min(devicePixelRatio || 1, 2);
       element.width = Math.round(width * ratio); element.height = Math.round(height * ratio); refresh();
@@ -101,12 +96,12 @@ export default function StrategyVisual({ locale }: { locale: Locale }) {
       targetY = ((event.clientY - bounds.top) / bounds.height - .5) * .8;
     };
     const resetPointer = () => { targetX = 0; targetY = 0; };
-    const onScroll = () => { if (visible && !pauseRef.current && !reduced.matches) scroll = Math.min(window.scrollY / window.innerHeight, 1.5); };
+    const onScroll = () => { if (visible && !reduced.matches) scroll = Math.min(window.scrollY / window.innerHeight, 1.5); };
     element.addEventListener('pointermove', onPointer); element.addEventListener('pointerleave', resetPointer);
     window.addEventListener('scroll', onScroll, { passive: true });
     reduced.addEventListener('change', refresh); window.addEventListener('oddly-theme-change', refresh); document.addEventListener('visibilitychange', refresh);
     return () => {
-      cancelAnimationFrame(frame); resize.disconnect(); observer.disconnect(); refreshRef.current = () => {};
+      cancelAnimationFrame(frame); resize.disconnect(); observer.disconnect();
       element.removeEventListener('pointermove', onPointer); element.removeEventListener('pointerleave', resetPointer);
       window.removeEventListener('scroll', onScroll); reduced.removeEventListener('change', refresh);
       window.removeEventListener('oddly-theme-change', refresh); document.removeEventListener('visibilitychange', refresh);
@@ -115,7 +110,5 @@ export default function StrategyVisual({ locale }: { locale: Locale }) {
   return <figure className="strategy-visual" aria-label={t('Tu negocio, clientes, mercado y canales se conectan en una evaluación para definir tu estrategia.')}>
     <canvas ref={canvas} aria-hidden="true" />
     <span className="strategy-visual__label strategy-visual__label--business">{t('Tu negocio')}</span><span className="strategy-visual__label strategy-visual__label--customers">{t('Tus clientes')}</span><span className="strategy-visual__label strategy-visual__label--market">{t('Tu mercado')}</span><span className="strategy-visual__label strategy-visual__label--channels">{t('Tus canales')}</span>
-    <span className="strategy-visual__diagnosis">{t('Evaluación')}</span><figcaption>{t('Una estrategia')}<br /><strong>{t('a tu medida.')}</strong></figcaption>
-    <button className="motion-toggle" type="button" onClick={() => { pauseRef.current = !pauseRef.current; setPaused(pauseRef.current); refreshRef.current(); }} aria-label={paused ? t('Reanudar animación del diagrama') : t('Pausar animación del diagrama')} aria-pressed={paused}>{paused ? <Play size={15} aria-hidden="true" /> : <Pause size={15} aria-hidden="true" />}</button>
-  </figure>;
+    <span className="strategy-visual__diagnosis">{t('Evaluación')}</span><figcaption>{t('Una estrategia')}<br /><strong>{t('a tu medida.')}</strong></figcaption>  </figure>;
 }
