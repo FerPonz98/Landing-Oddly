@@ -8,7 +8,7 @@ export default function LandingMotion() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const animations = new Set<Animation>();
     const reveals = new WeakMap<Element, Animation>();
-    const selectors = '.hero__copy > *, .hero__visual > *, .hero__closing, .section-heading, .approach__statement, .assessment-list > div, .process-tabs, .process-panel, .advisory__intro, .advisory__outcomes > *, .faq__heading, .faq__items > details, .contact__inner, .footer > *';
+    const selectors = '.hero__copy > *, .hero__visual > *, .hero__closing, .section-heading, .approach__statement, .assessment-list > div, .process-tabs, .process-panel, .advisory__intro, .advisory__outcomes > *, .cycle__steps > li, .faq__heading, .faq__items > details, .contact__inner, .footer > *';
     const hidden = (above: boolean) => ({ opacity: 0, translate: `0 ${above ? -24 : 24}px` });
     const shown = { opacity: 1, translate: '0 0' };
     // Elements enter and leave on every pass, from the side of the viewport they crossed.

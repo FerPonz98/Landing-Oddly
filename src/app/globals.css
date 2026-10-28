@@ -55,7 +55,7 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
 .text-link { display:inline-flex; align-items:center; gap:12px; font-size:13px; font-weight:600; padding-block:12px; transition:color 160ms ease; }
 .hero__visual { align-self:center; min-width:0; }
 .reading-progress { position:fixed; top:0; left:0; z-index:25; width:100%; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:left; pointer-events:none; }
-.strategy-visual__label,.strategy-visual__diagnosis,.strategy-visual figcaption { pointer-events:none; }
+.strategy-visual__label,.strategy-visual figcaption { pointer-events:none; }
 .button svg,.text-link svg,.header__contact svg { transition:transform 220ms var(--ease-out); }
 .assessment-list > div,.advisory__outcomes > div { transition:transform 220ms var(--ease-out); }
 .process__steps li::before { content:''; position:absolute; left:0; right:0; top:-1px; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform 250ms var(--ease-out); }
@@ -72,7 +72,6 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
 .strategy-visual__label--customers { right:7%; top:7%; }
 .strategy-visual__label--market { left:7%; top:75%; }
 .strategy-visual__label--channels { right:7%; top:75%; }
-.strategy-visual__diagnosis { position:absolute; left:50%; top:57%; transform:translateX(-50%); font-size:12px; color:var(--accent); }
 .strategy-visual figcaption { position:absolute; top:88%; left:50%; transform:translateX(-50%); white-space:nowrap; text-align:center; font-size:17px; line-height:1.4; }
 .strategy-visual figcaption strong { font-weight:600; }
 .hero__closing { grid-column:1/-1; display:flex; justify-content:space-between; border-top:1px solid var(--line); padding-top:22px; margin-top:66px; font-size:13px; color:var(--muted); }
@@ -239,7 +238,6 @@ body,.header { background-color:var(--page-background); transition:background-co
 main,.footer { position:relative; z-index:1; }
 .background-trails { position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; mask-image:linear-gradient(to right,#000,rgba(0,0,0,.18) 25%,rgba(0,0,0,.08) 50%,rgba(0,0,0,.18) 75%,#000); }
 .hero__visual { perspective:1000px; }
-.strategy-visual__diagnosis { top:72%; background:var(--background); padding:3px 9px; border-radius:20px; }
 .strategy-visual__label { color:var(--foreground); }
 [data-tilt] { transform-style:preserve-3d; transition:transform 400ms var(--ease-out),background-color 350ms ease; }
 .approach__statement { position:relative; isolation:isolate; overflow:clip; }
@@ -311,20 +309,11 @@ main,.footer { position:relative; z-index:1; }
 /* Continuous surfaces share the page palette instead of resetting it. */
 .process-panel,.approach__statement { background:color-mix(in srgb,var(--page-background) 80%,var(--foreground) 4%); }
 .approach__statement { gap:26px; padding-top:30px; }
-.approach-map { position:relative; min-height:210px; width:100%; max-width:340px; margin-inline:auto; }
-.approach-map svg { position:absolute; inset:0; width:100%; height:100%; fill:none; stroke:var(--accent); stroke-width:.8; opacity:.35; }
-.approach-map__center { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:6px; font-size:12px; color:var(--foreground); }
-.approach-map__center svg { position:static; width:34px; height:34px; opacity:1; stroke:none; fill:currentColor; }
-.approach-map__label { position:absolute; font-size:11px; background:var(--page-background); color:var(--muted); padding:4px 8px; }
-.approach-map__label--top { top:8%; left:50%; transform:translateX(-50%); }
-.approach-map__label--bottom { bottom:8%; left:50%; transform:translateX(-50%); }
-.approach-map__label--left { left:0; top:50%; transform:translateY(-50%); }
-.approach-map__label--right { right:0; top:50%; transform:translateY(-50%); }
 .contact__inner { background:color-mix(in srgb,var(--page-background) 87%,var(--accent) 13%); }
  .brand-watermark { position:fixed; z-index:0; top:10vh; left:50%; transform:translateX(-50%); width:min(76vw,600px); aspect-ratio:600/420; pointer-events:none; opacity:0; }
 .brand-watermark img { display:block; width:100%; height:100%; object-fit:contain; }
 @media (hover:hover) and (pointer:fine) { .approach__statement:hover { background:color-mix(in srgb,var(--page-background) 87%,var(--accent) 13%); } }
-@media (max-width:700px) { .approach-map { min-height:190px; } .approach__statement { padding:26px; } }
+@media (max-width:700px) { .approach__statement { padding:26px; } }
 
 [data-theme='dark'] .brand-watermark img { opacity:.55; }
 
@@ -374,3 +363,40 @@ html[lang='en'] .hero h1 { font-size:clamp(38px,4.85vw,71px); }
 /* Light mode keeps the secondary CTA on the brand orange. */
 :root:not([data-theme='dark']) .button--outline { background:var(--accent); border-color:transparent; color:var(--button-text); }
 @media (hover:hover) and (pointer:fine) { .footer a:hover .brand-symbol { background:var(--accent); } }
+
+/* El Ciclo Oddly: services as a numbered row, same rules and type as the advisory outcomes. */
+.cycle__steps { display:grid; grid-template-columns:repeat(5,1fr); list-style:none; margin:0; padding:0; }
+.cycle__steps li { position:relative; padding:28px 24px 0 0; border-top:1px solid var(--line); }
+.cycle__steps li + li { padding-left:24px; }
+.cycle__steps li::before { content:''; position:absolute; left:0; right:0; top:-1px; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform 250ms var(--ease-out); }
+.cycle__number { display:block; margin-bottom:22px; color:var(--accent); font-size:13px; font-weight:600; font-variant-numeric:tabular-nums; }
+.cycle__steps h3 { font-size:14px; font-weight:600; color:var(--muted); margin-bottom:12px; }
+.cycle__steps strong { display:block; color:var(--foreground); font-size:19px; line-height:1.3; letter-spacing:-.015em; font-weight:500; margin-bottom:10px; }
+.cycle__steps span:not(.cycle__number) { display:block; font-size:14px; }
+@media (hover:hover) and (pointer:fine) { .cycle__steps li:hover::before { transform:scaleX(1); } }
+@media (max-width:1100px) { .cycle__steps { grid-template-columns:repeat(3,1fr); row-gap:44px; } .cycle__steps li:nth-child(3n+1) { padding-left:0; } }
+@media (max-width:700px) {
+  .cycle__steps { grid-template-columns:1fr; row-gap:0; }
+  .cycle__steps li,.cycle__steps li + li { display:grid; grid-template-columns:44px 1fr; column-gap:12px; padding:22px 0; }
+  .cycle__number { grid-row:1 / span 2; margin:2px 0 0; }
+  .cycle__steps h3 { margin-bottom:6px; }
+  .cycle__steps strong { font-size:18px; }
+}
+
+/* Ciclo Oddly wheel: outer brand ring and stage ring turn at different speeds around a fixed core. */
+:root { --cycle-a:#3b4273; --cycle-b:#2e345f; --cycle-c:#272c54; --cycle-d:#1f2347; --cycle-e:#191a37; --cycle-gap:#fffdf9; --cycle-core:#df6a2f; }
+:root[data-theme='dark'] { --cycle-a:#4c5492; --cycle-b:#3e4583; --cycle-c:#363c78; --cycle-d:#2d326a; --cycle-e:#25295c; --cycle-gap:#fffdf9; }
+.cycle-visual { display:block; width:100%; max-width:340px; margin-inline:auto; overflow:visible; font-family:var(--font-barlow),sans-serif; }
+.cycle-visual__gap { fill:var(--cycle-gap); }
+.cycle-visual__tone-a { fill:var(--cycle-a); } .cycle-visual__tone-b { fill:var(--cycle-b); }
+.cycle-visual__tone-c { fill:var(--cycle-c); } .cycle-visual__tone-d { fill:var(--cycle-d); } .cycle-visual__tone-e { fill:var(--cycle-e); }
+.cycle-visual text { fill:#fffdf9; text-anchor:middle; dominant-baseline:central; }
+.cycle-visual__brand { font-size:15px; font-weight:600; letter-spacing:.2em; }
+.cycle-visual__stage { font-size:21px; font-weight:700; letter-spacing:.01em; }
+.cycle-visual__core { fill:var(--cycle-core); }
+.cycle-visual__title { font-size:27px; font-weight:700; letter-spacing:-.01em; }
+.cycle-visual__outer,.cycle-visual__inner { transform-box:view-box; transform-origin:50% 50%; }
+.cycle-visual__outer { animation:cycle-spin 60s linear infinite reverse; }
+.cycle-visual__inner { animation:cycle-spin 36s linear infinite; }
+@keyframes cycle-spin { to { transform:rotate(360deg); } }
+@media (max-width:700px) { .cycle-visual { max-width:260px; } }

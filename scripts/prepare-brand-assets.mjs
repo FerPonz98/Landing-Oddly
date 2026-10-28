@@ -22,7 +22,7 @@ for (const [name, source] of Object.entries(sources)) {
   await sharp(await artwork(source)).resize({ width: 600 }).webp({ quality: 95 }).toFile(`public/brand/oddly-${name}.webp`);
 }
 const symbol = await artwork('public/logo/logo-03.png');
-await sharp(symbol).resize({ width: 360 }).webp({ quality: 95 }).toFile('public/brand/oddly-symbol.webp');
+await sharp(symbol).resize({ width: 720 }).webp({ quality: 95 }).toFile('public/brand/oddly-symbol.webp');
 for (const [name, size] of [['icon', 64], ['apple-icon', 180]]) {
   const inset = Math.round(size * .17);
   const mark = await sharp(symbol).resize(size - inset * 2, size - inset * 2, { fit: 'contain', background: '#fffdf9' }).png().toBuffer();

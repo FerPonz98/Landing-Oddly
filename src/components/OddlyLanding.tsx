@@ -1,12 +1,13 @@
 import { getTranslator, type Locale } from '@/lib/i18n';
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight, Check, Minus, Plus, Target, WhatsappLogo } from '@phosphor-icons/react/dist/ssr';
+import { ArrowRight, ArrowUpRight, Check, Minus, Plus, WhatsappLogo } from '@phosphor-icons/react/dist/ssr';
 import LandingHeader from './LandingHeader';
 import StrategyVisual from './StrategyVisual';
 import { getWhatsAppHref, oddlyWhatsAppNumber } from '@/lib/contact';
 import LandingMotion from './LandingMotion';
 import ProcessExplorer from './ProcessExplorer';
 import BackgroundTrails from './BackgroundTrails';
+import CycleVisual from './CycleVisual';
 
 
 export function BrandLogo() {
@@ -22,9 +23,16 @@ function ContactAction({ secondary = false, locale, href: whatsappHref }: { seco
 const faqs = [
   { question: '¿Trabajan con empresas de cualquier sector?', answer: 'Sí. Evaluamos cada empresa en su propio contexto. El sector, los clientes, la situación actual y los objetivos influyen en la estrategia que recomendamos.' },
   { question: '¿Qué pasa si todavía no sé qué necesita mi empresa?', answer: 'Ese es un buen punto de partida. La evaluación nos ayuda a entender tu situación, identificar oportunidades y orientar las decisiones de marketing.' },
-  { question: '¿Oddly también ejecuta las campañas?', answer: 'Nuestro servicio se centra en la asesoría: evaluamos tu empresa y recomendamos una estrategia de marketing. La ejecución de campañas no forma parte de este servicio.' },
+  { question: '¿Oddly también ejecuta las campañas?', answer: 'Sí. El Ciclo Oddly no se queda en la recomendación: diseño, contenido, redes y web se ejecutan con nosotros, dentro del mismo proceso que ya te diagnosticó qué hacer.' },
   { question: '¿Todas las empresas reciben la misma estrategia?', answer: 'No. Una estrategia útil depende de tu negocio. Las recomendaciones se adaptan a tus objetivos, tus clientes y las oportunidades que encontramos al evaluar tu empresa.' },
-  { question: '¿Pueden garantizar un aumento de ventas?', answer: 'El objetivo es ayudarte a tomar mejores decisiones de marketing para mejorar tus ventas. Los resultados también dependen de la implementación, el mercado y otros factores del negocio; no prometemos resultados garantizados.' },
+  { question: '¿Pueden garantizar un aumento de ventas?', answer: 'Garantizamos el trabajo, no una cifra: cada ciclo tiene objetivos claros, reportes con números reales y ajustes basados en datos. Así sabrás en todo momento cuánto avanzan tus ventas y qué hacemos para que avancen más.' },
+] as const;
+const cycle = [
+  { name: 'Diagnóstico', title: 'Entender antes de actuar.', text: 'Conocemos tu empresa, tus clientes y tu mercado para encontrar qué está frenando tus ventas.' },
+  { name: 'Marca', title: 'Desde dónde construir.', text: 'Ya sabes cuál es el problema. Te damos algo sólido desde donde construir tu marca.' },
+  { name: 'Estrategia', title: 'Un porqué detrás de cada paso.', text: 'Te orientamos sobre qué hacer y por qué, con recomendaciones adaptadas a tu empresa.' },
+  { name: 'Ejecución', title: 'La estrategia se vuelve real.', text: 'Diseño, audiovisual, redes, web: lo construimos nosotros, no solo lo sugerimos.' },
+  { name: 'Medición', title: 'Medimos, ajustamos, seguimos.', text: 'No entregamos estrategia y desaparecemos. Medimos, ajustamos y volvemos a empezar.' },
 ] as const;
 export default function OddlyLanding({ locale }: { locale: Locale }) {
   const t = getTranslator(locale);
@@ -48,7 +56,7 @@ export default function OddlyLanding({ locale }: { locale: Locale }) {
       <section className="approach section-shell section-space" id="problema" aria-labelledby="approach-title">
         <div className="section-heading"><h2 id="approach-title">{t('Antes de recomendar,')}<br /><span className="muted-heading">{t('hay que entender.')}</span></h2><p>{t('Hay muchas formas de hacer marketing. Elegir la adecuada empieza por conocer lo que tu empresa realmente necesita.')}</p></div>
         <div className="approach__body">
-          <div className="approach__statement" data-tilt><div className="approach-map" aria-hidden="true"><svg viewBox="0 0 320 190"><ellipse cx="160" cy="95" rx="118" ry="64" /><ellipse cx="160" cy="95" rx="74" ry="40" /><path d="M42 95H278M160 31V159" /></svg><span className="approach-map__center"><Target size={34} weight="light" />{t('Tu empresa')}</span><span className="approach-map__label approach-map__label--top">{t('Objetivos')}</span><span className="approach-map__label approach-map__label--left">{t('Negocio')}</span><span className="approach-map__label approach-map__label--right">{t('Clientes')}</span><span className="approach-map__label approach-map__label--bottom">{t('Canales')}</span></div><span className="approach__line" aria-hidden="true" /><p>{t('Una buena estrategia')}<br />{t('empieza por entender')}<br /><strong>{t('tu empresa.')}</strong></p></div>
+          <div className="approach__statement" data-tilt><CycleVisual locale={locale} /><span className="approach__line" aria-hidden="true" /><p>{t('Una buena estrategia')}<br />{t('empieza por entender')}<br /><strong>{t('tu empresa.')}</strong></p></div>
           <div className="assessment-list">
             <div><h3>{t('Tu negocio y tus objetivos')}</h3><p>{t('Dónde estás hoy y hacia dónde quieres llevar tus ventas.')}</p></div>
             <div><h3>{t('Tus clientes y tu mercado')}</h3><p>{t('A quién necesitas llegar y qué influye en su decisión de compra.')}</p></div>
@@ -58,7 +66,7 @@ export default function OddlyLanding({ locale }: { locale: Locale }) {
         </div>
       </section>
       <section className="process section-space" id="proceso" aria-labelledby="process-title"><div className="section-shell">
-        <div className="section-heading"><h2 id="process-title">{t('Del diagnóstico')}<br />{t('a una dirección clara.')}</h2><p>{t('Un proceso para transformar preguntas sobre tu negocio en decisiones de marketing con fundamento.')}</p></div>
+        <div className="section-heading"><h2 id="process-title">{t('Del diagnóstico')}<br />{t('a una dirección clara.')}</h2><p>{t('Un proceso para transformar la percepción de tu marca en un activo que se puede ver crecer.')}</p></div>
         <ProcessExplorer locale={locale} />
       </div></section>
       <section className="advisory section-shell section-space" id="proyectos" aria-labelledby="advisory-title">
@@ -67,8 +75,12 @@ export default function OddlyLanding({ locale }: { locale: Locale }) {
         <div className="advisory__outcomes"><h3>{t('Lo que aporta nuestra asesoría')}</h3>
           <div><Check size={22} aria-hidden="true" /><p><strong>{t('Una lectura de tu situación.')}</strong><span>{t('Entender el punto de partida de tu negocio y sus necesidades de marketing.')}</span></p></div>
           <div><Check size={22} aria-hidden="true" /><p><strong>{t('Prioridades con sentido.')}</strong><span>{t('Identificar las oportunidades que merecen tu atención.')}</span></p></div>
-          <div><Check size={22} aria-hidden="true" /><p><strong>{t('Recomendaciones a tu medida.')}</strong><span>{t('Orientación sobre qué hacer y por qué, según los objetivos de tu empresa.')}</span></p></div>
+          <div><Check size={22} aria-hidden="true" /><p><strong>{t('Planificación a tu medida.')}</strong><span>{t('Orientación sobre qué hacer y por qué, según los objetivos de tu empresa.')}</span></p></div>
         </div>
+      </section>
+      <section className="cycle section-shell section-space" id="ciclo" aria-labelledby="cycle-title">
+        <div className="section-heading"><h2 id="cycle-title">{t('El Ciclo Oddly.')}</h2><p>{t('Del diagnóstico a la medición, un mismo equipo acompaña cada etapa de tu marca.')}</p></div>
+        <ol className="cycle__steps">{cycle.map((step, index) => <li key={step.name}><span className="cycle__number">0{index + 1}</span><h3>{t(step.name)}</h3><p><strong>{t(step.title)}</strong><span>{t(step.text)}</span></p></li>)}</ol>
       </section>
       <div id="estudio" className="section-shell" aria-hidden="true" />
       <section className="faq section-shell section-space" id="faq" aria-labelledby="faq-title"><div className="faq__heading"><h2 id="faq-title">{t('Hablemos')}<br />{t('con claridad.')}</h2><p>{t('Algunas preguntas antes de empezar.')}</p></div><div className="faq__items">{faqs.map(item => <details key={t(item.question)}><summary>{t(item.question)}<span className="faq__toggle" aria-hidden="true"><Plus className="faq__plus" size={16} /><Minus className="faq__minus" size={16} /></span></summary><p>{t(item.answer)}</p></details>)}</div></section>

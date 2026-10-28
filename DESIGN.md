@@ -17,11 +17,8 @@ colors:
   dark-surface: "#201d35"
   dark-line: "#3b374f"
   dark-button-text: "#161329"
-  core-highlight: "#df793e"
-  core-shade: "#99401e"
   evolved-background: "#ffead8"
   dark-evolved-background: "#302036"
-  core-orange: "#cf5b25"
 typography:
   display:
     fontFamily: "Barlow, sans-serif"
@@ -129,7 +126,7 @@ components:
 
 **Creative North Star: "The connected evaluation"**
 
-Oddly combines supplied script artwork, deep blue ink, orange emphasis and generous Barlow typography with Merienda script accents. Fine rules and flat tonal surfaces organize the content without competing with the brand. The perspective-projected orbital visual gives the system a recognizable language of evaluation and connection, with a matte orange core and depth-scaled satellites.
+Oddly combines supplied script artwork, deep blue ink, orange emphasis and generous Barlow typography with Merienda script accents. Fine rules and flat tonal surfaces organize the content without competing with the brand. In the hero, the Oddly isotype repeatedly assembles itself from connected points and settles into the clean mark, giving the system a recognizable language of evaluation and connection.
 
 Light is the initial theme. An explicit dark choice persists in local storage and is applied before hydration. Scroll-driven rotation, perspective tilt, continuous background evolution and hover feedback make relationships visible while preserving readable content, the native cursor and user control.
 
@@ -138,7 +135,7 @@ Light is the initial theme. An explicit dark choice persists in local storage an
 - Supplied Oddly artwork with optimized derivatives.
 - Barlow for structure, Merienda reserved for emphasis words, spacious headings and concise labels.
 - Flat surfaces, fine rules and orange emphasis in two themes.
-- Orbital 3D motion, growing curved trails and pointer tilt with reduced-motion support.
+- A connect-the-dots isotype, growing curved trails and pointer tilt with reduced-motion support.
 
 ## Colors
 
@@ -148,8 +145,6 @@ Warm paper, deep blue ink and an orange interface accent form the palette. The Y
 
 - **Interface orange** (`accent`): contact buttons, emphasized heading text, process numbers, focus outlines, progress and canvas signals. `dark-accent` replaces it in dark mode.
 - **Supplied artwork orange** (`brand-orange`): the identity artwork's orange reference, retained separately from the more legible light-theme interface accent.
-
-- **Matte core orange** (`core-highlight`, `core-orange`, `core-shade`): canvas-only radial-gradient stops at (0), (.5) and (1), providing restrained volume without a bright specular highlight.
 
 ### Neutral
 
@@ -250,9 +245,9 @@ The desktop panel has minimum height (400px), padding (44px) and a translucent o
 
 ### Connected evaluation diagram
 
-Four labeled inputs feed a perspective-projected orbital system. Three rotating great circles, twelve depth-scaled satellites and a matte orange sphere replace the earlier flat center and pulse. Canvas projection uses a perspective factor (3.6), with a radius proportional to the smaller dimension (.28). Base yaw advances at (.17 radians/s); satellites advance at (.24 / -.18 radians/s). Signals travel inward at (.2 cycles/s).
+Four labeled inputs connect into the Oddly isotype (`StrategyVisual`), drawn on canvas from `public/brand/oddly-symbol.webp`. The isotype's alpha mask is sampled at (240px) into outline nodes spaced at (4.6%) of its width plus sparser interior nodes; each node links to up to four neighbours, and a link is kept only when it stays on the artwork, so no line bridges a gap in the mark. Ink-coloured nodes appear from the base of the isotype towards the tips of its arms over (2.6s), each link growing from the earlier node to the later one, while the four input lines reach the nearest node and a fifth, orange line rises from a point above the caption to the base of the mark. Each of the five points emits a fading ring every (2.4s) and keeps sending three small ink dots along its line, easing in and out, until they disappear into the isotype.
 
-Mouse movement eases yaw/pitch toward a small orientation offset (.065 per frame). Scroll adds rotation, capped at (1.5) viewport heights. The diagram has no pause UI, per the user's explicit direction. Continuous animation stops when offscreen, the tab is hidden, or reduced motion is requested. Reduced motion renders a static projection. Theme and resize changes redraw it; device pixel ratio is capped at (2). The native cursor remains visible.
+The network then fades as the solid isotype settles in (.9s), in the ink colour and with nothing drawn on or around it. The clean mark holds for (6s), fades out over (.7s), and the points connect again. Under a mouse, the network shows through the mark in the paper colour within (110px) of the cursor. The build restarts each time the hero re-enters the viewport. Animation stops when offscreen, the tab is hidden, or reduced motion is requested; reduced motion renders the clean isotype statically. Theme and resize changes repaint it; device pixel ratio is capped at (2). The diagram has no pause UI, per the user's explicit direction. The native cursor remains visible.
 
 ### Curved background trails
 
@@ -264,7 +259,7 @@ The background has no pause UI, per the user's explicit direction. Hidden-tab an
 
 ### Statement context map
 
-The statement panel contains a decorative context map before its rule and message. Two accent ellipses and cross-axis lines surround a light-weight target icon labeled “Tu empresa”. Four positioned labels name Objetivos, Negocio, Clientes and Canales. The diagram is hidden from assistive technology because the adjacent assessment copy conveys the same concepts. It has (210px) minimum height, a (340px) maximum width, (11px) outer labels and a (34px) center icon; mobile minimum height becomes (190px). Label fills use the evolving page color and the existing mouse tilt adds depth to the panel.
+The statement panel contains the Ciclo Oddly wheel (`CycleVisual`) before its rule and message: an outer navy ring repeating “ODDLY”, a stage ring with interlocking arrow segments for Atraer, Interactuar and Deleitar, and a fixed orange core reading “Ciclo Oddly”, separated by light gaps. The outer ring turns counter-clockwise over (60s) and the stage ring clockwise over (36s); reduced motion stops both. The SVG is exposed as one labeled image. It has a (340px) maximum width, (260px) on mobile, and the existing mouse tilt adds depth to the panel.
 
 ### Full background watermark
 
