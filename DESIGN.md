@@ -259,7 +259,7 @@ The background has no pause UI, per the user's explicit direction. Hidden-tab an
 
 ### Statement context map
 
-The statement panel contains the Ciclo Oddly wheel (`CycleVisual`) before its rule and message: an outer navy ring repeating “ODDLY”, a stage ring with interlocking arrow segments for Atraer, Interactuar and Deleitar, and a fixed orange core reading “Ciclo Oddly”, separated by light gaps. The outer ring turns counter-clockwise over (60s) and the stage ring clockwise over (36s); reduced motion stops both. The SVG is exposed as one labeled image. It has a (340px) maximum width, (260px) on mobile, and the existing mouse tilt adds depth to the panel.
+The statement panel contains the Ciclo Oddly wheel (`CycleVisual`) before its rule and message: an outer navy ring repeating “ODDLY”, a stage ring with interlocking arrow segments for Datos, Estrategia and Crecimiento, and a fixed orange core reading “Ciclo Oddly”, separated by light gaps. The outer ring turns counter-clockwise over (60s) and the stage ring clockwise over (36s); reduced motion stops both. The SVG is exposed as one labeled image. It has a (340px) maximum width, (260px) on mobile, and the existing mouse tilt adds depth to the panel.
 
 ### Full background watermark
 

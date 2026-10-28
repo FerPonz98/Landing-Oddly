@@ -14,12 +14,12 @@ const arrowSegment = (from: number, to: number, inner: number, outer: number, ti
 };
 const circlePath = (r: number, start: number) => `M${polar(r, start)} A${r} ${r} 0 1 1 ${polar(r, start + 180)} A${r} ${r} 0 1 1 ${polar(r, start)}`;
 
-const stages = ['Deleitar', 'Atraer', 'Interactuar'] as const;
+const stages = ['Datos', 'Estrategia', 'Crecimiento'] as const;
 
 export default function CycleVisual({ locale }: { locale: Locale }) {
   const t = getTranslator(locale);
   const [first, second] = t('Ciclo Oddly').split(' ');
-  return <svg className="cycle-visual" viewBox="0 0 400 400" role="img" aria-label={t('El Ciclo Oddly: atraer, interactuar y deleitar.')}>
+  return <svg className="cycle-visual" viewBox="0 0 400 400" role="img" aria-label={t('El Ciclo Oddly: datos, estrategia y crecimiento.')}>
     <defs>
       <path id="cycle-outer-path" d={circlePath(177, -45)} />
       <path id="cycle-inner-path" d={circlePath(121, -60)} />
