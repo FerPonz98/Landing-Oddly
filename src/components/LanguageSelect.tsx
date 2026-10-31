@@ -69,6 +69,8 @@ export default function LanguageSelect({ locale, onOpen }: { locale: Locale; onO
         event.preventDefault();
         if (code === locale) { close(true); return; }
         const url = new URL(window.location.href); url.searchParams.set('lang', code);
+        // The reload after a language switch opens the page directly, without the loading intro.
+        try { sessionStorage.setItem('oddly-intro', 'skip'); } catch {}
         window.location.assign(url.toString());
       }}><span className="language-option__text"><span className="language-option__name" lang={code}>{languageNames[code]}</span><span className="language-option__description">{code === locale ? t('Idioma actual') : t(translatedNames[code])}</span></span><span className="language-option__mark" aria-hidden="true">{code === locale ? <Check size={17} weight="bold" /> : <span>{code.toUpperCase()}</span>}</span></a>)}</div>
       <p className="language-panel__note">{t('Tu elección se guarda.')}</p>

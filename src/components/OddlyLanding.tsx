@@ -7,7 +7,7 @@ import { getWhatsAppHref, oddlyWhatsAppNumber } from '@/lib/contact';
 import LandingMotion from './LandingMotion';
 import ProcessExplorer from './ProcessExplorer';
 import BackgroundTrails from './BackgroundTrails';
-import CycleVisual from './CycleVisual';
+import SpiralVisual from './SpiralVisual';
 
 
 export function BrandLogo() {
@@ -18,7 +18,7 @@ export function BrandLogo() {
 }
 function ContactAction({ secondary = false, locale, href: whatsappHref }: { secondary?: boolean; locale: Locale; href?: string }) {
   const t = getTranslator(locale);
-  return <a className={`button${secondary ? ' button--outline' : ''}`} href={whatsappHref || '#contacto'} target={whatsappHref ? '_blank' : undefined} rel={whatsappHref ? 'noopener noreferrer' : undefined}><span>{t('Hablemos de tu empresa')}</span><ArrowUpRight size={20} aria-hidden="true" /></a>;
+  return <a className={`button${secondary ? ' button--outline' : ''}`} href={whatsappHref || '#contacto'} target={whatsappHref ? '_blank' : undefined} rel={whatsappHref ? 'noopener noreferrer' : undefined}><span>{t('Contáctanos')}</span><ArrowUpRight size={20} aria-hidden="true" /></a>;
 }
 const faqs = [
   { question: '¿Trabajan con empresas de cualquier sector?', answer: 'Sí. Evaluamos cada empresa en su propio contexto. El sector, los clientes, la situación actual y los objetivos influyen en la estrategia que recomendamos.' },
@@ -56,7 +56,7 @@ export default function OddlyLanding({ locale }: { locale: Locale }) {
       <section className="approach section-shell section-space" id="problema" aria-labelledby="approach-title">
         <div className="section-heading"><h2 id="approach-title">{t('Antes de recomendar,')}<br /><span className="muted-heading">{t('hay que entender.')}</span></h2><p>{t('Hay muchas formas de hacer marketing. Elegir la adecuada empieza por conocer lo que tu empresa realmente necesita.')}</p></div>
         <div className="approach__body">
-          <div className="approach__statement" data-tilt><CycleVisual locale={locale} /><span className="approach__line" aria-hidden="true" /><p>{t('Una buena estrategia')}<br />{t('empieza por entender')}<br /><strong>{t('tu empresa.')}</strong></p></div>
+          <div className="approach__statement" data-tilt><SpiralVisual locale={locale} /><span className="approach__line" aria-hidden="true" /><p>{t('Una buena estrategia')}<br />{t('empieza por entender')}<br /><strong>{t('tu empresa.')}</strong></p></div>
           <div className="assessment-list">
             <div><h3>{t('Tu negocio y tus objetivos')}</h3><p>{t('Dónde estás hoy y hacia dónde quieres llevar tus ventas.')}</p></div>
             <div><h3>{t('Tus clientes y tu mercado')}</h3><p>{t('A quién necesitas llegar y qué influye en su decisión de compra.')}</p></div>
@@ -66,7 +66,6 @@ export default function OddlyLanding({ locale }: { locale: Locale }) {
         </div>
       </section>
       <section className="process section-space" id="proceso" aria-labelledby="process-title"><div className="section-shell">
-        <div className="section-heading"><h2 id="process-title">{t('Del diagnóstico')}<br />{t('a una dirección clara.')}</h2><p>{t('Un proceso para transformar la percepción de tu marca en un activo que se puede ver crecer.')}</p></div>
         <ProcessExplorer locale={locale} />
       </div></section>
       <section className="advisory section-shell section-space" id="proyectos" aria-labelledby="advisory-title">

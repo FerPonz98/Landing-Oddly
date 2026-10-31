@@ -36,7 +36,7 @@ export default function BackgroundTrails() {
       previous = time;
       context.setTransform(ratio, 0, 0, ratio, 0, 0); context.clearRect(0, 0, width, height);
       const baseline = width < 700 ? 10 : 18;
-      const targetCount = baseline * (1 + 3 * Math.pow(progress, 1.2));
+      const targetCount = Math.min(routes.length, baseline * (1 + 3 * Math.pow(progress, 1.2)));
       const count = Math.ceil(targetCount);
       element.dataset.trailCount = String(targetCount);
       const intensity = .03 + Math.pow(progress, 1.2) * .4;
@@ -49,12 +49,12 @@ export default function BackgroundTrails() {
         if (reduced.matches) continue;
         const head = (elapsed * (.065 + i * .003) + i * .143 + progress * .2) % 1;
         const length = .12;
-        for (let n = 0; n < 24; n++) {
-          const start = head - length + length * n / 24;
+        for (let n = 0; n < segments; n++) {
+          const start = head - length + length * n / segments;
           if (start < 0) continue;
-          const a = point(start, i), b = point(start + length / 24, i);
-          context.globalAlpha = intensity * presence * (n / 24) * Math.sin(head * Math.PI);
-          context.lineWidth = 1 + n / 24 * 1.3;
+          const a = point(start, i), b = point(start + length / segments, i);
+          context.globalAlpha = intensity * presence * (n / segments) * Math.sin(head * Math.PI);
+          context.lineWidth = 1 + n / segments * 1.3;
           context.beginPath(); context.moveTo(a.x, a.y); context.lineTo(b.x, b.y); context.stroke();
         }
       }
@@ -62,10 +62,16 @@ export default function BackgroundTrails() {
       if (moving && progress > .01) frame = requestAnimationFrame(draw);
     };
     const refresh = () => { cancelAnimationFrame(frame); previous = 0; updateColor(); draw(performance.now()); };
+    // Phones resize the viewport whenever the address bar shows or hides; only a real size change rebuilds the trails.
+    let segments = 24;
     const resize = () => {
-      width = innerWidth; height = innerHeight; ratio = Math.min(devicePixelRatio || 1, 2);
+      if (routes.length && innerWidth === width && Math.abs(innerHeight - height) < 160) return;
+      width = innerWidth; height = innerHeight;
+      // Phones draw fewer, coarser trails at device pixel ratio 1.
+      const phone = width < 700;
+      ratio = phone ? 1 : Math.min(devicePixelRatio || 1, 2); segments = phone ? 12 : 24;
       element.width = Math.round(width * ratio); element.height = Math.round(height * ratio);
-      routes = Array.from({ length: width < 700 ? 40 : 72 }, (_, i) => {
+      routes = Array.from({ length: phone ? 20 : 72 }, (_, i) => {
         const route = new Path2D();
         for (let n = 0; n <= 60; n++) { const p = point(n / 60, i); if (!n) route.moveTo(p.x, p.y); else route.lineTo(p.x, p.y); }
         return route;

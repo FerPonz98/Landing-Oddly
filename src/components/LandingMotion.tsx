@@ -8,7 +8,7 @@ export default function LandingMotion() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const animations = new Set<Animation>();
     const reveals = new WeakMap<Element, Animation>();
-    const selectors = '.hero__copy > *, .hero__visual > *, .hero__closing, .section-heading, .approach__statement, .assessment-list > div, .process-tabs, .process-panel, .advisory__intro, .advisory__outcomes > *, .cycle__steps > li, .faq__heading, .faq__items > details, .contact__inner, .footer > *';
+    const selectors = '.hero__copy > *, .hero__closing, .section-heading, .approach__statement, .assessment-list > div, .advisory__intro, .advisory__outcomes > *, .cycle__steps > li, .faq__heading, .faq__items > details, .contact__inner, .footer > *';
     const hidden = (above: boolean) => ({ opacity: 0, translate: `0 ${above ? -24 : 24}px` });
     const shown = { opacity: 1, translate: '0 0' };
     // Elements enter and leave on every pass, from the side of the viewport they crossed.
@@ -24,17 +24,26 @@ export default function LandingMotion() {
       animations.add(animation);
     };
     let initial = true;
+    // While the loading intro plays, everything waits hidden; what is on screen then enters together when it ends.
+    let holding = Boolean(document.documentElement.dataset.intro);
+    const inView = new Set<Element>();
     const observer = new IntersectionObserver(entries => {
       if (reduced.matches) { initial = false; return; }
       for (const entry of entries) {
         const above = entry.boundingClientRect.top < (entry.rootBounds?.top ?? 0);
-        if (initial && !entry.isIntersecting) reveal(entry.target, false, above, true);
-        else if (entry.isIntersecting || reveals.has(entry.target)) reveal(entry.target, entry.isIntersecting, above);
+        if (entry.isIntersecting) inView.add(entry.target); else inView.delete(entry.target);
+        if (initial && (holding || !entry.isIntersecting)) reveal(entry.target, false, above, true);
+        else if (!holding && (entry.isIntersecting || reveals.has(entry.target))) reveal(entry.target, entry.isIntersecting, above);
       }
       initial = false;
     }, { threshold: .12 });
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>(selectors));
     revealElements.forEach(element => observer.observe(element));
+    const endIntro = () => {
+      holding = false;
+      if (!reduced.matches) revealElements.forEach(element => { if (inView.has(element)) reveal(element, true, false); });
+    };
+    window.addEventListener('oddly-intro-end', endIntro);
     const clearReveals = () => {
       animations.forEach(animation => animation.cancel());
       animations.clear();
@@ -88,7 +97,7 @@ export default function LandingMotion() {
     return () => {
       tiltHandlers.forEach(cleanup => cleanup());
       document.documentElement.style.removeProperty('--scroll-evolution');
-      observer.disconnect(); clearReveals();
+      observer.disconnect(); clearReveals(); window.removeEventListener('oddly-intro-end', endIntro);
       reduced.removeEventListener('change', stopMotion);
       window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule);
       cancelAnimationFrame(frame);
