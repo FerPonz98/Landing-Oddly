@@ -31,11 +31,28 @@ npm run build
 npm run start
 ```
 
+## Despliegue en AWS Amplify
+
+La landing se despliega con SSR en AWS Amplify Hosting (la ruta `/` es dinámica porque el middleware lee el idioma desde la cookie y los headers). La configuración de build está en `amplify.yml` (Node 20, `npm ci`, `npm run build`).
+
+1. En la consola de AWS Amplify, crear una app nueva y conectar el repositorio de GitHub `FerPonz98/Landing-Oddly`.
+2. Elegir la rama `main`.
+3. En la configuración de build, confirmar que Amplify detecta y usa el `amplify.yml` del repositorio.
+4. **Antes del primer build**, configurar las variables de entorno en *Hosting → Environment variables*:
+   - `NEXT_PUBLIC_WHATSAPP_NUMBER` = `59167443300`
+   - `NEXT_PUBLIC_SITE_URL` = URL pública con `https` y sin barra final (ej. `https://oddly.com.bo`)
+
+   Se incrustan en el build: si cambian, hay que volver a desplegar.
+5. Guardar y desplegar. Desde entonces, cada push a `main` dispara un deploy automático.
+6. Conectar el dominio propio en *Hosting → Custom domains*. Amplify emite y renueva el certificado SSL gratis. Después, actualizar `NEXT_PUBLIC_SITE_URL` con ese dominio y redeployar.
+
+Checklist detallado en [DEPLOY.md](DEPLOY.md).
+
 ## Diseño y assets
 
 - Next.js App Router y React; contenido renderizado en servidor, interacción de menú, tema y canvas en componentes de cliente.
 - Variables CSS para ambos temas. La preferencia se conserva localmente; una visita sin preferencia comienza en claro.
-- Manrope alojada localmente con `next/font/local`. Su licencia OFL está en `src/app/fonts/OFL.txt`.
+- Tipografías Barlow (texto) y Merienda (acentos) cargadas con `next/font/google` en `src/app/layout.tsx`; Next.js las descarga en el build y las sirve desde el propio sitio.
 - Iconos de Phosphor. Logos suministrados en `public/logo`; sus derivados optimizados están en `public/brand`.
 - Favicon, icono Apple y preview al compartir generados del arte de marca original. Para regenerar derivados, ejecutar `node scripts/prepare-brand-assets.mjs`.
 - La escena orbital 3D proyecta anillos y satélites alrededor de la evaluación; responde al cursor y al scroll, con control de pausa que conserva su posición. Se detiene fuera del viewport, con la pestaña oculta o con movimiento reducido. Las entradas al recorrer la página ocurren una sola vez; el contenido sigue visible si falla JavaScript.
