@@ -8,7 +8,7 @@ export function getWhatsAppHref(rawNumber?: string, locale: Locale = 'es'): stri
   return `https://wa.me/${number}?text=${encodeURIComponent(getTranslator(locale)(whatsappMessage))}`;
 }
 
-// Redes sociales de Oddly: cambiar aquí las URLs actualiza el footer, el contacto y el JSON-LD.
+// Redes sociales de Oddly: cambiar aquí las URLs actualiza los íconos del footer y el JSON-LD.
 export const socialLinks = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/oddly-marketing-a51223448/' },
   { name: 'Instagram', href: 'https://www.instagram.com/oddly_bo/' },
