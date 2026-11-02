@@ -1,3 +1,5 @@
+# OPCIONAL: solo sirve si algún día se despliega en AWS Amplify Hosting.
+# El despliegue actual es en un VPS de Hostinger con Easypanel (ver DEPLOY.md); este archivo no se usa ahí.
 version: 1
 frontend:
   phases:
