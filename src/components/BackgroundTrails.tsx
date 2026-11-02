@@ -38,7 +38,6 @@ export default function BackgroundTrails() {
       const baseline = width < 700 ? 10 : 18;
       const targetCount = Math.min(routes.length, baseline * (1 + 3 * Math.pow(progress, 1.2)));
       const count = Math.ceil(targetCount);
-      element.dataset.trailCount = String(targetCount);
       const intensity = .03 + Math.pow(progress, 1.2) * .4;
       context.strokeStyle = color; context.lineCap = 'round';
       for (let i = 0; i < count; i++) {

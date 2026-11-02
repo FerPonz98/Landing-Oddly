@@ -1,51 +1,156 @@
 # Oddly
 
-Landing de la consultora de marketing Oddly: evaluación del negocio y recomendaciones personalizadas para mejorar ventas. Incluye tema claro inicial, selector de tema oscuro, preguntas frecuentes y contacto por WhatsApp.
+Landing de **Oddly**, consultora de marketing: explica cómo Oddly evalúa cada empresa y recomienda la estrategia de marketing que mejor responde a sus objetivos de ventas, y lleva a una primera conversación por WhatsApp. Está disponible en español, inglés y portugués, con tema claro y oscuro.
 
-## Desarrollo
+Sitio: **https://oddly.com.bo**
 
-Node.js 20 o superior y npm.
+## Stack
+
+- **Next.js 15** (App Router), renderizado en servidor; la ruta `/` es dinámica porque el idioma se resuelve en el middleware.
+- **React 19** y **TypeScript** (modo estricto).
+- **Phosphor Icons** (`@phosphor-icons/react`).
+- Tipografías **Barlow** (texto) y **Merienda** (palabras de énfasis), cargadas con `next/font/google`: Next.js las descarga durante el build y las sirve desde el propio sitio.
+- CSS propio en `src/app/globals.css` con variables para ambos temas; sin frameworks de CSS ni librerías de animación (las animaciones usan canvas, SVG y Web Animations API).
+
+## Desarrollo local
+
+Requisitos: **Node.js 20** (ver `.nvmrc`) y npm.
 
 ```bash
 npm install
-cp .env.example .env.local
+cp .env.example .env.local   # en Windows PowerShell: Copy-Item .env.example .env.local
 npm run dev
 ```
 
-Abrir http://localhost:3000.
+Abrir http://localhost:3000. En desarrollo puede usarse `NEXT_PUBLIC_SITE_URL=http://localhost:3000` en `.env.local`. Después de cambiar una variable, reiniciar `npm run dev`.
 
-## Contacto
+## Variables de entorno
 
-El contacto predeterminado es **+591 67443300**. Para cambiarlo, configurar `NEXT_PUBLIC_WHATSAPP_NUMBER` con el código de país y número completo, sin espacios ni `+`. Los botones abrirán WhatsApp con un mensaje preparado. La landing no envía mensajes automáticamente.
+| Variable | Obligatoria | Valor en producción | Si no se define | Uso |
+| --- | --- | --- | --- | --- |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | No | `59167443300` | `59167443300` | Número de WhatsApp (código de país + número, solo dígitos). Si no tiene entre 8 y 15 dígitos, los botones llevan a `#contacto`, que avisa que el canal no está disponible, y el botón flotante no aparece. |
+| `NEXT_PUBLIC_SITE_URL` | Sí, en producción | `https://oddly.com.bo` | `http://localhost:3000` | URL pública sin barra final: Open Graph y Twitter, canonical y hreflang, JSON-LD, `robots.txt` y `sitemap.xml`. |
+| `PORT` | No | — | `3000` | Puerto de `npm start`. |
+| `NIXPACKS_NODE_VERSION` | Solo en Easypanel | `20` | — | Fija la versión de Node del build con Nixpacks. |
 
-Si se configura un número que no tiene entre 8 y 15 dígitos, los botones llevan a la sección de contacto, donde se indica que el canal aún no está disponible. No se simula ningún envío. Reiniciar desarrollo o recompilar producción después de cambiar el número.
+Las variables `NEXT_PUBLIC_*` se incrustan en el build: si cambian, hay que volver a compilar y desplegar.
 
-Al desplegar, configurar también `NEXT_PUBLIC_SITE_URL` con la URL pública para que las imágenes de Open Graph y Twitter apunten al dominio correcto. En desarrollo se usa `http://localhost:3000`.
+## Estructura de carpetas
 
-## Comprobaciones y producción
-
-```bash
-npm run lint
-npx tsc --noEmit
-npm run build
-npm run start
+```
+src/
+  app/
+    layout.tsx          HTML base: idioma, fuentes, scripts de tema e intro, JSON-LD, canonical y hreflang
+    page.tsx            Página única y metadatos traducidos (title, description, Open Graph, Twitter)
+    globals.css         Estilos y variables de tema
+    robots.ts           /robots.txt
+    sitemap.ts          /sitemap.xml (las tres versiones de idioma)
+    icon.png, apple-icon.png, opengraph-image.png   Favicon, icono Apple e imagen al compartir
+  components/
+    OddlyLanding.tsx    Estructura de la página y sus secciones
+    LandingHeader.tsx   Cabecera, menú móvil y cambio de tema
+    LanguageSelect.tsx  Selector de idioma
+    StrategyVisual.tsx  Visual del hero y la intro de carga
+    SpiralVisual.tsx    Espiral del Ciclo Oddly
+    ProcessExplorer.tsx Proceso fijo en pantalla con sus cuatro etapas
+    BackgroundTrails.tsx Estelas del fondo
+    LandingMotion.tsx   Entradas al hacer scroll, barra de progreso, inclinación y marca de agua
+    FloatingWhatsApp.tsx Botón flotante de WhatsApp
+    SocialLinks.tsx     Íconos de redes sociales
+  lib/
+    i18n.ts             Idiomas y traducciones tipadas
+    contact.ts          WhatsApp (número, mensaje, enlace) y redes sociales
+    site.ts             URL pública y URL de cada idioma
+    isotype.ts          Trazo del isotipo de Oddly
+  middleware.ts         Resuelve el idioma (?lang= y cookie)
+public/
+  brand/                Derivados optimizados del logo y del símbolo (webp) y su origen (ORIGINS.md)
+  logo/                 Arte original del logo entregado por Oddly
+scripts/
+  prepare-brand-assets.mjs  Regenera public/brand, el favicon y el icono Apple desde public/logo
+  capture-review.mjs        Utilidad de desarrollo: guarda una captura recibida como JSON (base64) en un archivo
 ```
 
-## Diseño y assets
+`PRODUCT.md` describe el servicio y `DESIGN.md` el sistema visual.
 
-- Next.js App Router y React; contenido renderizado en servidor, interacción de menú, tema y canvas en componentes de cliente.
-- Variables CSS para ambos temas. La preferencia se conserva localmente; una visita sin preferencia comienza en claro.
-- Manrope alojada localmente con `next/font/local`. Su licencia OFL está en `src/app/fonts/OFL.txt`.
-- Iconos de Phosphor. Logos suministrados en `public/logo`; sus derivados optimizados están en `public/brand`.
-- Favicon, icono Apple y preview al compartir generados del arte de marca original. Para regenerar derivados, ejecutar `node scripts/prepare-brand-assets.mjs`.
-- La escena orbital 3D proyecta anillos y satélites alrededor de la evaluación; responde al cursor y al scroll, con control de pausa que conserva su posición. Se detiene fuera del viewport, con la pestaña oculta o con movimiento reducido. Las entradas al recorrer la página ocurren una sola vez; el contenido sigue visible si falla JavaScript.
-- El proceso permite seleccionar cuatro etapas mediante clic, toque o teclado. La sección sigue el mismo fondo progresivo del resto de la página. El fondo evoluciona gradualmente hacia melocotón en claro y ciruela en oscuro; el logo blanco completo aparece sutilmente como marca de agua de fondo de la landing al acercarse al final.
-- Las superficies con inclinación y los botones con barrido de color responden al hover; el movimiento espacial se desactiva cuando se solicita movimiento reducido.
-- Estelas curvas decoran el fondo: al final alcanzan 72 trayectorias en escritorio y 40 en móvil, con rutas curvas precalculadas. No tienen control de pausa; se detienen al ocultar la pestaña y muestran curvas estáticas con movimiento reducido.
-- PRODUCT.md registra el servicio confirmado; DESIGN.md documenta el sistema visual.
+## Secciones y anclas
 
-La ruta principal y las anclas `#top`, `#problema`, `#proceso`, `#proyectos`, `#estudio`, `#faq` y `#contacto` se conservan. `#proyectos` ahora corresponde a asesoría; `#asesoria` es un destino alternativo.
+| Ancla | Sección |
+| --- | --- |
+| `#top` | Hero: «Marketing pensado para vender mejor», con el visual del isotipo. |
+| `#problema` | Enfoque: «Antes de recomendar, hay que entender», con la espiral del Ciclo Oddly y los cuatro puntos que se evalúan. |
+| `#proceso` | Proceso: «Del diagnóstico a una dirección clara», cuatro etapas. |
+| `#proyectos` (alias `#asesoria`) | Asesoría: «Más claridad. Mejores decisiones.» |
+| `#ciclo` | El Ciclo Oddly: Diagnóstico, Marca, Estrategia, Ejecución y Medición. |
+| `#faq` | Preguntas frecuentes. |
+| `#contacto` | Contacto por WhatsApp. |
+| `#estudio` | Ancla vacía que se conserva para enlaces antiguos. |
+| `#contenido` | Inicio del contenido principal (destino de «Saltar al contenido»). |
+
+La cabecera enlaza a Enfoque, Proceso, Asesoría y Preguntas.
 
 ## Idiomas
 
-Español, inglés y portugués mediante un menú de idiomas en la cabecera. Muestra los nombres originales, marca el idioma activo y funciona con flechas, Home/End, búsqueda por inicial, Enter/Espacio y Escape. En móvil usa un botón compacto y un panel amplio. Sin JavaScript conserva los enlaces de idioma. URLs compartibles: `/?lang=es`, `/?lang=en`, `/?lang=pt`. La preferencia se conserva en la cookie `oddly-language` durante un año; una URL con idioma explícito tiene prioridad. Sin preferencia se usa español. Contenido renderizado en servidor, atributo `lang`, etiquetas accesibles, metadatos y mensajes de WhatsApp traducidos. Las traducciones tipadas están en `src/lib/i18n.ts`.
+- Español (predeterminado), inglés y portugués.
+- URLs compartibles: `/?lang=es`, `/?lang=en`, `/?lang=pt`. Al entrar con `?lang=`, la preferencia se guarda en la cookie `oddly-language` durante un año; un `?lang=` explícito siempre tiene prioridad.
+- El selector de la cabecera muestra los nombres en su idioma original y se maneja con flechas, Home/End, búsqueda por inicial, Enter/Espacio y Escape. Sin JavaScript siguen funcionando sus enlaces.
+- Se traducen el contenido, el atributo `lang`, las etiquetas accesibles, los metadatos (title, description, Open Graph, Twitter) y el mensaje de WhatsApp. Cada idioma tiene su `canonical` y los `hreflang` de las tres versiones.
+- Todas las traducciones están en `src/lib/i18n.ts`, en filas `['es', 'en', 'pt']`. El texto en español es la clave tipada: usar un texto que no esté en la lista es un error de TypeScript.
+
+## Contacto, WhatsApp y redes sociales
+
+- **WhatsApp**: número predeterminado en `src/lib/contact.ts` (`oddlyWhatsAppNumber`), reemplazable con `NEXT_PUBLIC_WHATSAPP_NUMBER`. El mensaje preparado (`whatsappMessage`) se traduce según el idioma. Usan este enlace el botón «Hablemos» de la cabecera, los botones «Contáctanos» (hero, asesoría, contacto y menú móvil) y el botón flotante. La landing no envía mensajes por sí sola: solo abre WhatsApp.
+- **Botón flotante** (`src/components/FloatingWhatsApp.tsx`): aparece después de que el «Contáctanos» del hero sale por arriba de la pantalla y se oculta mientras `#contacto` o el footer están visibles; en móvil también mientras la tarjeta fija del proceso ocupa la pantalla. No aparece durante la intro, entra con un fundido y una leve subida (sin animación con movimiento reducido), respeta el área segura inferior y queda por debajo de la cabecera, el menú y el selector de idioma.
+- **Redes sociales**: se cambian en un solo lugar, el arreglo `socialLinks` de `src/lib/contact.ts` (LinkedIn, Instagram y TikTok). De ahí salen los íconos del footer y del panel del menú móvil, y el `sameAs` del JSON-LD `Organization`. Para agregar una red, sumar su ícono en `src/components/SocialLinks.tsx` y su etiqueta «Oddly en …» en `src/lib/i18n.ts`.
+
+## Diseño y animaciones
+
+- Tema claro al entrar por primera vez; el botón de la cabecera cambia a oscuro y la elección se guarda en el navegador.
+- **Intro de carga**: en una visita normal, el isotipo se dibuja a trazo en el centro y vuela hasta el hero. Se omite al entrar con un ancla, con movimiento reducido o después de cambiar de idioma; si no llega a arrancar, la página se muestra a los 6 s.
+- **Hero**: el isotipo se conecta con «Tu negocio», «Tus clientes», «Tu mercado» y «Tus canales», y con la estrategia resultante; por cada línea viajan puntos y al llegar se abre un anillo. Se desplaza levemente con el scroll. Se detiene fuera de pantalla, con la pestaña oculta o con movimiento reducido.
+- **Espiral del Ciclo Oddly** (`#problema`): tres ciclos con las etapas Datos, Estrategia y Crecimiento. Un punto naranja la recorre del Ciclo 1 (arriba) al Ciclo 3 (abajo) con una etiqueta de etapa y ciclo («Datos · ciclo 1»). Se detiene fuera de pantalla o con la pestaña oculta; con movimiento reducido el punto queda quieto al final del Ciclo 3.
+- **Proceso** (`#proceso`): la sección queda fija mientras se hace scroll y avanza por sus cuatro etapas; en cada una, círculos salen de su tarjeta y forman una parte del isotipo, que se completa en la última. Las etapas se pueden elegir con clic, toque o teclado.
+- **Scroll**: los bloques entran y salen con una animación al cruzar la pantalla; una barra de progreso recorre la parte superior; el fondo cambia poco a poco hacia melocotón (claro) o ciruela (oscuro) y, cerca del final, aparece una marca de agua del logo.
+- **Fondo**: estelas curvas que ganan presencia con el scroll (hasta 72 en escritorio y 20 en móvil); se detienen con la pestaña oculta y quedan estáticas con movimiento reducido.
+- Inclinación al pasar el mouse sobre la tarjeta de la espiral y barrido de color en los botones.
+- Con `prefers-reduced-motion`, se desactivan la intro, las entradas, los desplazamientos y la inclinación; los canvas muestran un estado quieto.
+
+## Seguridad
+
+`next.config.mjs` desactiva `X-Powered-By` (`poweredByHeader: false`) y envía en todas las rutas:
+
+- `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=()`
+- `Content-Security-Policy`: `default-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'`. `'unsafe-inline'` cubre los scripts en línea de `src/app/layout.tsx` (tema, intro y JSON-LD); en `next dev` se agrega `'unsafe-eval'` para la recarga en caliente.
+
+> **Importante:** si se agrega un script o servicio externo (Google Analytics, Google Tag Manager, Meta Pixel, un chat, un video embebido, fuentes externas, Cloudflare Web Analytics…), hay que permitir su dominio en la directiva correspondiente de la CSP (`script-src`, `connect-src`, `img-src`, `frame-src`…) en `next.config.mjs`. Si no, el navegador lo bloqueará.
+
+## Despliegue
+
+Producción corre en un VPS de Hostinger con **Easypanel** (build Nixpacks, Node 20, puerto 3000, `npm start` escucha en `0.0.0.0`). El dominio `oddly.com.bo` está registrado en NIC Bolivia y su DNS se administra en **Cloudflare** (registros A de `@` y `www` en *DNS only*). Cada push a `main` se publica con Auto Deploy.
+
+Guía completa (DNS, Easypanel, HTTPS, proxy de Cloudflare, correo y checklist): **[DEPLOY.md](DEPLOY.md)**. `amplify.yml` es opcional y solo serviría para AWS Amplify.
+
+## Comprobaciones
+
+```bash
+npm ci
+npm run lint
+npx tsc --noEmit
+npm run build
+npm start                      # http://localhost:3000
+curl -I http://localhost:3000  # cabeceras de seguridad, sin X-Powered-By
+```
+
+## Equipo y créditos
+
+Landing de **Oddly**.
+
+<!-- Completar con los nombres del equipo -->
+- Dirección y estrategia: _[completar]_
+- Diseño: _[completar]_
+- Desarrollo: _[completar]_
+- Contenido: _[completar]_
