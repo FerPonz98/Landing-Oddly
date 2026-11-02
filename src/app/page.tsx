@@ -9,7 +9,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t('Oddly | Consultoría de marketing para mejorar tus ventas'),
     description: t('Evaluamos tu empresa y recomendamos estrategias de marketing adaptadas a tu negocio para ayudarte a mejorar tus ventas.'),
-    alternates: { canonical: `/?lang=${locale}`, languages: { es: '/?lang=es', en: '/?lang=en', pt: '/?lang=pt', 'x-default': '/?lang=es' } },
     openGraph: { title: t('Oddly | Marketing pensado para vender mejor'), description: t('Asesoría de marketing que empieza por entender tu empresa.'), locale: { es: 'es_BO', en: 'en_US', pt: 'pt_BR' }[locale], alternateLocale: ['es_BO', 'en_US', 'pt_BR'].filter(code => code !== { es: 'es_BO', en: 'en_US', pt: 'pt_BR' }[locale]), type: 'website' },
     twitter: { card: 'summary_large_image', title: t('Oddly | Marketing pensado para vender mejor'), description: t('Asesoría de marketing que empieza por entender tu empresa.') },
   };
