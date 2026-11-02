@@ -1,0 +1,20 @@
+# OPCIONAL: solo sirve si algún día se despliega en AWS Amplify Hosting.
+# El despliegue actual es en un VPS de Hostinger con Easypanel (ver DEPLOY.md); este archivo no se usa ahí.
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm use 20
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      - .next/cache/**/*
