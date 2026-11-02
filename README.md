@@ -20,6 +20,8 @@ El contacto predeterminado es **+591 67443300**. Para cambiarlo, configurar `NEX
 
 Si se configura un número que no tiene entre 8 y 15 dígitos, los botones llevan a la sección de contacto, donde se indica que el canal aún no está disponible. No se simula ningún envío. Reiniciar desarrollo o recompilar producción después de cambiar el número.
 
+Los enlaces a redes sociales (LinkedIn, Instagram y TikTok) se cambian en un solo lugar: el arreglo `socialLinks` de `src/lib/contact.ts`. Desde ahí se alimentan los íconos del footer, la línea «También estamos en» de la sección de contacto y el campo `sameAs` del JSON-LD `Organization` en `src/app/layout.tsx`. Si se agrega una red nueva, asignarle su ícono en `socialIcons` (`src/components/OddlyLanding.tsx`) y su etiqueta accesible «Oddly en …» en `src/lib/i18n.ts`.
+
 Al desplegar, configurar también `NEXT_PUBLIC_SITE_URL` con la URL pública para que las imágenes de Open Graph y Twitter apunten al dominio correcto. En desarrollo se usa `http://localhost:3000`.
 
 ## Comprobaciones y producción
