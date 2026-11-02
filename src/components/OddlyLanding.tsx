@@ -1,33 +1,25 @@
 import { getTranslator, type Locale } from '@/lib/i18n';
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight, Check, InstagramLogo, LinkedinLogo, Minus, Plus, TiktokLogo, WhatsappLogo } from '@phosphor-icons/react/dist/ssr';
+import { ArrowRight, ArrowUpRight, Check, Minus, Plus, WhatsappLogo } from '@phosphor-icons/react/dist/ssr';
 import LandingHeader from './LandingHeader';
 import StrategyVisual from './StrategyVisual';
-import { getWhatsAppHref, oddlyWhatsAppNumber, socialLinks, type SocialNetwork } from '@/lib/contact';
+import { getWhatsAppHref, oddlyWhatsAppNumber } from '@/lib/contact';
 import LandingMotion from './LandingMotion';
 import ProcessExplorer from './ProcessExplorer';
 import BackgroundTrails from './BackgroundTrails';
 import SpiralVisual from './SpiralVisual';
 import FloatingWhatsApp from './FloatingWhatsApp';
-
+import SocialLinks from './SocialLinks';
 
 export function BrandLogo() {
   return <span className="brand-logo">
-    <Image className="brand-logo__dark" src="/brand/oddly-dark.webp" alt="Oddly" width={600} height={420} priority />
-    <Image className="brand-logo__light" src="/brand/oddly-light.webp" alt="Oddly" width={600} height={420} priority />
+    <Image className="brand-logo__dark" src="/brand/oddly-dark.webp" alt="Oddly" width={90} height={63} priority />
+    <Image className="brand-logo__light" src="/brand/oddly-light.webp" alt="Oddly" width={90} height={63} priority />
   </span>;
 }
 function ContactAction({ secondary = false, locale, href: whatsappHref }: { secondary?: boolean; locale: Locale; href?: string }) {
   const t = getTranslator(locale);
   return <a className={`button${secondary ? ' button--outline' : ''}`} href={whatsappHref || '#contacto'} target={whatsappHref ? '_blank' : undefined} rel={whatsappHref ? 'noopener noreferrer' : undefined}><span>{t('Contáctanos')}</span><ArrowUpRight size={20} aria-hidden="true" /></a>;
-}
-const socialIcons = { LinkedIn: LinkedinLogo, Instagram: InstagramLogo, TikTok: TiktokLogo } satisfies Record<SocialNetwork, unknown>;
-function SocialLinks({ locale }: { locale: Locale }) {
-  const t = getTranslator(locale);
-  return <ul className="social-links" aria-label={t('Redes sociales de Oddly')}>{socialLinks.map(({ name, href }) => {
-    const Icon = socialIcons[name];
-    return <li key={name}><a href={href} target="_blank" rel="noopener noreferrer" aria-label={t(`Oddly en ${name}`)}><Icon size={20} aria-hidden="true" /></a></li>;
-  })}</ul>;
 }
 const faqs = [
   { question: '¿Trabajan con empresas de cualquier sector?', answer: 'Sí. Evaluamos cada empresa en su propio contexto. El sector, los clientes, la situación actual y los objetivos influyen en la estrategia que recomendamos.' },

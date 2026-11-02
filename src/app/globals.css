@@ -38,8 +38,8 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
 .menu-toggle { display:none; }
 .mobile-menu[hidden] { display:none; }
 .mobile-menu { position:absolute; top:100%; left:0; right:0; background:var(--background); border:1px solid var(--line); padding:12px 24px; }
-.mobile-menu a { display:flex; justify-content:space-between; align-items:center; min-height:58px; border-bottom:1px solid var(--line); font-size:17px; }
-.mobile-menu a:last-child { border-bottom:0; color:var(--accent); }
+.mobile-menu > a { display:flex; justify-content:space-between; align-items:center; min-height:58px; border-bottom:1px solid var(--line); font-size:17px; }
+.mobile-menu > a:last-of-type { border-bottom:0; color:var(--accent); }
 .hero { display:grid; grid-template-columns:1.6fr 1fr; column-gap:40px; padding-top:80px; padding-bottom:32px; }
 .hero__copy { padding-block:36px 48px; align-self:center; position:relative; z-index:1; }
 .hero h1 { font-size:clamp(40px,5.05vw,74px); line-height:1.13; letter-spacing:-.04em; font-weight:500; }
@@ -52,7 +52,7 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
 .button--outline { background:transparent; border-color:var(--line); color:var(--foreground); }
 .button:active,.icon-button:active { transform:scale(.98); }
 .button:disabled { background:var(--line); color:var(--muted); transform:none; }
-.text-link { display:inline-flex; align-items:center; gap:12px; font-size:13px; font-weight:600; padding-block:12px; transition:color 160ms ease; }
+.text-link { display:inline-flex; align-items:center; gap:12px; min-height:44px; font-size:13px; font-weight:600; padding-block:12px; transition:color 160ms ease; }
 .hero__visual { align-self:center; min-width:0; }
 .reading-progress { position:fixed; top:0; left:0; z-index:25; width:100%; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:left; pointer-events:none; }
 .strategy-visual__label,.strategy-visual figcaption { pointer-events:none; }
@@ -102,13 +102,6 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
 .advisory__outcomes svg { color:var(--accent); flex-shrink:0; margin-top:3px; }
 .advisory__outcomes strong { color:var(--foreground); display:block; font-size:19px; letter-spacing:-.015em; font-weight:500; margin-bottom:8px; }
 .advisory__outcomes span { display:block; font-size:14px; max-width:42ch; }
-.about { border-block:1px solid var(--line); }
-.about__inner { display:grid; grid-template-columns:1fr 1.2fr; gap:110px; align-items:center; }
-.about__brand { display:flex; align-items:center; flex-direction:column; gap:26px; }
-.about__brand img { width:min(100%,290px); }
-.about__brand span { font-size:13px; color:var(--muted); }
-.about h2 { font-size:clamp(30px,3vw,46px); }
-.about p { max-width:50ch; margin-top:24px; }
 .faq { display:grid; grid-template-columns:1fr 1.45fr; gap:90px; }
 .faq__heading p { margin-top:24px; }
 .faq details { border-top:1px solid var(--line); }
@@ -152,7 +145,7 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
   .hero { grid-template-columns:1.65fr 1fr; gap:26px; padding-top:70px; }
   .hero h1 { font-size:4.85vw; }
   .hero__actions { gap:18px; }
-  .approach__body,.advisory,.about__inner,.faq { gap:54px; }
+  .approach__body,.advisory,.faq { gap:54px; }
   .contact__inner { padding:40px; }
 }
 @media (max-width:1000px) {
@@ -184,16 +177,12 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
   .strategy-visual__label { font-size:12px; }
   .strategy-visual figcaption { font-size:15px; }
   .hero__closing { margin-top:46px; flex-direction:column; gap:7px; font-size:12px; }
-  .approach__body,.advisory,.about__inner,.faq { grid-template-columns:1fr; gap:36px; }
+  .approach__body,.advisory,.faq { grid-template-columns:1fr; gap:36px; }
   .approach__statement { min-height:220px; padding:30px; }
   .approach__statement p { font-size:25px; }
   .assessment-list > div { padding-block:22px; }
   .advisory__intro > p { margin-block:22px 28px; }
   .advisory__outcomes { padding-top:12px; }
-  .about__inner { gap:42px; }
-  .about__brand { align-items:flex-start; gap:14px; }
-  .about__brand img { width:165px; }
-  .about h2 { font-size:34px; }
   .faq summary { font-size:15px; padding-block:22px; }
   .faq details p { font-size:14px; padding-right:16px; }
   .contact { padding-bottom:56px; }
@@ -233,8 +222,6 @@ main,.footer { position:relative; z-index:1; }
 .process { transition:background-color 650ms ease,color 450ms ease; }
 .process { background:transparent; }
 .process p { transition:color 450ms ease; }
-.about__brand { perspective:900px; }
-.about__brand img { backface-visibility:hidden; }
 .contact__inner { position:relative; isolation:isolate; overflow:hidden; transition:background-color 350ms ease; }
 .contact__inner::before { content:''; position:absolute; z-index:-1; width:500px; height:500px; right:-310px; top:-290px; border:1px solid var(--accent); border-radius:50%; transform:scale(1); transition:transform 700ms var(--ease-out); pointer-events:none; }
 .contact__inner:focus-within::before { transform:scale(2); }
@@ -258,7 +245,7 @@ main,.footer { position:relative; z-index:1; }
   .hero__visual { translate:none !important; }
 }
 @media (prefers-reduced-motion:reduce) {
-  [data-tilt],.about__brand img,.hero__visual { transform:none !important; translate:none !important; }
+  [data-tilt],.hero__visual { transform:none !important; translate:none !important; }
   .faq summary:hover,.advisory__outcomes > div:hover svg,.button:hover { transform:none; }
   .contact__inner::before { display:none; }
 }
@@ -320,6 +307,8 @@ html[lang='en'] .hero h1 { font-size:clamp(38px,4.85vw,71px); }
 /* Light mode keeps the secondary CTA on the brand orange. */
 :root:not([data-theme='dark']) .button--outline { background:var(--accent); border-color:transparent; color:var(--button-text); }
 @media (hover:hover) and (pointer:fine) { .footer a:hover .brand-symbol { background:var(--accent); } }
+/* The footer symbol link keeps a 44px touch area around the 41px mark. */
+.footer > a:first-child { display:grid; align-content:center; min-height:44px; }
 
 /* El Ciclo Oddly: services as a numbered row, same rules and type as the advisory outcomes. */
 .cycle__steps { display:grid; grid-template-columns:repeat(5,1fr); list-style:none; margin:0; padding:0; }
@@ -407,7 +396,7 @@ html[data-intro]:not([data-intro='edges']) .strategy-visual { visibility:hidden;
 @media (max-width:860px) and (max-height:700px) { .process-stage__copy p { display:none; } }
 @media (prefers-reduced-motion:reduce) { .process-stage__number span,.process-step { transition:none; } .process-stage__copy { animation:none; } }
 
-/* Redes sociales del footer, con el formato de .icon-button. */
+/* Redes sociales del footer y del menú móvil, con el formato de .icon-button. */
 .social-links { display:flex; align-items:center; gap:10px; list-style:none; margin:0; padding:0; }
 .social-links a { display:grid; place-items:center; width:44px; height:44px; border:1px solid var(--line); border-radius:50%; color:var(--foreground); transition:color 160ms ease,border-color 160ms ease,background 160ms ease; }
 .social-links a:focus-visible { color:var(--accent); }
@@ -418,6 +407,7 @@ html[data-intro]:not([data-intro='edges']) .strategy-visual { visibility:hidden;
   .footer > .social-links { grid-column:1/-1; grid-row:3; }
 }
 @media (prefers-reduced-motion:reduce) { .social-links a { transition:none; } }
+.mobile-menu__social { padding:14px 0 6px; border-top:1px solid var(--line); }
 
 /* Botón flotante de WhatsApp: bajo el header (z-index 20) y sus paneles, oculto durante la intro. */
 .floating-whatsapp { position:fixed; z-index:15; right:max(16px,env(safe-area-inset-right)); bottom:calc(16px + env(safe-area-inset-bottom)); display:grid; place-items:center; width:56px; height:56px; border-radius:50%; background:var(--accent); color:var(--button-text); box-shadow:0 8px 24px rgba(22,19,41,.18); opacity:0; translate:0 12px; visibility:hidden; pointer-events:none; transition:opacity 220ms ease,translate 260ms var(--ease-out),visibility 0s linear 260ms; }
