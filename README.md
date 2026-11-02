@@ -35,6 +35,19 @@ npm run build
 npm run start
 ```
 
+## Seguridad
+
+`next.config.mjs` envía estas cabeceras en todas las rutas y desactiva `X-Powered-By` (`poweredByHeader: false`):
+
+- `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=()`
+- `Content-Security-Policy`: solo recursos del propio dominio (`'self'`), imágenes también desde `data:` y `blob:`, sin iframes que muestren la página (`frame-ancestors 'none'`) y sin `<object>`. `script-src` y `style-src` permiten `'unsafe-inline'` por los scripts en línea de `src/app/layout.tsx` (tema, intro y JSON-LD) y los estilos en línea. En desarrollo se añade `'unsafe-eval'` para el hot reload.
+
+Si se agrega un script o servicio externo (Google Analytics, Meta Pixel, un chat, un video embebido, fuentes externas, etc.), hay que permitir su dominio en la directiva correspondiente de la CSP (`script-src`, `connect-src`, `img-src`, `frame-src`…) en `next.config.mjs`; si no, el navegador lo bloqueará.
+
 ## Diseño y assets
 
 - Next.js App Router y React; contenido renderizado en servidor, interacción de menú, tema y canvas en componentes de cliente.
