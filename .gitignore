@@ -4,10 +4,13 @@ out
 build
 dist
 .env
-.env.local
+.env.*
+!.env.example
 .DS_Store
 *.tsbuildinfo
 next-env.d.ts
-.impeccable/review/
-.impeccable/live/
-.impeccable/cache/
+
+# Herramientas de diseño con IA usadas en desarrollo (no las usa el build)
+.agents/
+.impeccable/
+skills-lock.json
