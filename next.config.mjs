@@ -32,6 +32,10 @@ const nextConfig = {
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }];
   },
+  // Browsers still ask for /favicon.ico on their own; serve the app icon instead of a 404.
+  async rewrites() {
+    return [{ source: '/favicon.ico', destination: '/icon.png' }];
+  },
 };
 
 export default nextConfig;
