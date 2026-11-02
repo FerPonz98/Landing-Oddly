@@ -340,7 +340,7 @@ html[lang='en'] .hero h1 { font-size:clamp(38px,4.85vw,71px); }
   .cycle__steps strong { font-size:18px; }
 }
 
-/* Ciclo Oddly spiral: three rounds of Datos, Estrategia and Crecimiento descend, each lower than the last, with an orange dot running through them. */
+/* Ciclo Oddly spiral: three cycles of Datos, Estrategia and Crecimiento stack upwards, each higher and wider than the last; an orange dot runs through them from the top cycle down. */
 :root { --spiral-1:#6b74b5; --spiral-2:#3b4273; --spiral-3:#1f2347; }
 :root[data-theme='dark'] { --spiral-1:#9aa2e0; --spiral-2:#5c64a8; --spiral-3:#3b4280; }
 .spiral-visual { display:grid; gap:12px; justify-items:center; }
