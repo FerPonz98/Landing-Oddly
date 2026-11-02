@@ -8,6 +8,7 @@ import LandingMotion from './LandingMotion';
 import ProcessExplorer from './ProcessExplorer';
 import BackgroundTrails from './BackgroundTrails';
 import SpiralVisual from './SpiralVisual';
+import FloatingWhatsApp from './FloatingWhatsApp';
 
 
 export function BrandLogo() {
@@ -21,11 +22,11 @@ function ContactAction({ secondary = false, locale, href: whatsappHref }: { seco
   return <a className={`button${secondary ? ' button--outline' : ''}`} href={whatsappHref || '#contacto'} target={whatsappHref ? '_blank' : undefined} rel={whatsappHref ? 'noopener noreferrer' : undefined}><span>{t('Contáctanos')}</span><ArrowUpRight size={20} aria-hidden="true" /></a>;
 }
 const socialIcons = { LinkedIn: LinkedinLogo, Instagram: InstagramLogo, TikTok: TiktokLogo } satisfies Record<SocialNetwork, unknown>;
-function SocialLinks({ locale, className, iconSize }: { locale: Locale; className: string; iconSize: number }) {
+function SocialLinks({ locale }: { locale: Locale }) {
   const t = getTranslator(locale);
-  return <ul className={`social-links ${className}`} aria-label={t('Redes sociales de Oddly')}>{socialLinks.map(({ name, href }) => {
+  return <ul className="social-links" aria-label={t('Redes sociales de Oddly')}>{socialLinks.map(({ name, href }) => {
     const Icon = socialIcons[name];
-    return <li key={name}><a href={href} target="_blank" rel="noopener noreferrer" aria-label={t(`Oddly en ${name}`)}><Icon size={iconSize} aria-hidden="true" /></a></li>;
+    return <li key={name}><a href={href} target="_blank" rel="noopener noreferrer" aria-label={t(`Oddly en ${name}`)}><Icon size={20} aria-hidden="true" /></a></li>;
   })}</ul>;
 }
 const faqs = [
@@ -91,8 +92,9 @@ export default function OddlyLanding({ locale }: { locale: Locale }) {
       </section>
       <div id="estudio" className="section-shell" aria-hidden="true" />
       <section className="faq section-shell section-space" id="faq" aria-labelledby="faq-title"><div className="faq__heading"><h2 id="faq-title">{t('Hablemos')}<br />{t('con claridad.')}</h2><p>{t('Algunas preguntas antes de empezar.')}</p></div><div className="faq__items">{faqs.map(item => <details key={t(item.question)}><summary>{t(item.question)}<span className="faq__toggle" aria-hidden="true"><Plus className="faq__plus" size={16} /><Minus className="faq__minus" size={16} /></span></summary><p>{t(item.answer)}</p></details>)}</div></section>
-      <section className="contact section-shell" id="contacto" aria-labelledby="contact-title"><div className="contact__inner"><div><h2 id="contact-title">{t('El siguiente paso empieza')}<br />{t('por conocer tu empresa.')}</h2><p>{t('Cuéntanos qué quieres mejorar. Empecemos una conversación sobre tu negocio y tus objetivos de ventas.')}</p></div><div className="contact__action">{whatsappHref ? <><ContactAction locale={locale} href={whatsappHref} /><span className="contact__channel"><WhatsappLogo size={18} aria-hidden="true" />{t('Conversemos por WhatsApp')}</span></> : <><button className="button" disabled>{t('WhatsApp no disponible')}<WhatsappLogo size={20} aria-hidden="true" /></button><p className="contact__notice">{t('Nuestro canal de contacto estará disponible próximamente.')}</p></>}<div className="contact__social"><span>{t('También estamos en')}</span><SocialLinks locale={locale} className="social-links--compact" iconSize={18} /></div></div></div></section>
+      <section className="contact section-shell" id="contacto" aria-labelledby="contact-title"><div className="contact__inner"><div><h2 id="contact-title">{t('El siguiente paso empieza')}<br />{t('por conocer tu empresa.')}</h2><p>{t('Cuéntanos qué quieres mejorar. Empecemos una conversación sobre tu negocio y tus objetivos de ventas.')}</p></div><div className="contact__action">{whatsappHref ? <><ContactAction locale={locale} href={whatsappHref} /><span className="contact__channel"><WhatsappLogo size={18} aria-hidden="true" />{t('Conversemos por WhatsApp')}</span></> : <><button className="button" disabled>{t('WhatsApp no disponible')}<WhatsappLogo size={20} aria-hidden="true" /></button><p className="contact__notice">{t('Nuestro canal de contacto estará disponible próximamente.')}</p></>}</div></div></section>
     </main>
-    <footer className="footer section-shell"><a href="#top" aria-label={t('Oddly, volver al inicio')}><span className="brand-symbol" aria-hidden="true" /></a><p>{t('Una estrategia pensada para tu negocio.')}</p><SocialLinks locale={locale} className="social-links--footer" iconSize={20} /><a className="text-link" href="#top">{t('Volver arriba')}<ArrowUpRight size={18} aria-hidden="true" /></a><small>© {new Date().getFullYear()} Oddly</small></footer>
+    <footer className="footer section-shell"><a href="#top" aria-label={t('Oddly, volver al inicio')}><span className="brand-symbol" aria-hidden="true" /></a><p>{t('Una estrategia pensada para tu negocio.')}</p><SocialLinks locale={locale} /><a className="text-link" href="#top">{t('Volver arriba')}<ArrowUpRight size={18} aria-hidden="true" /></a><small>© {new Date().getFullYear()} Oddly</small></footer>
+    <FloatingWhatsApp locale={locale} />
   </>;
 }
