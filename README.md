@@ -20,6 +20,10 @@ El contacto predeterminado es **+591 67443300**. Para cambiarlo, configurar `NEX
 
 Si se configura un número que no tiene entre 8 y 15 dígitos, los botones llevan a la sección de contacto, donde se indica que el canal aún no está disponible. No se simula ningún envío. Reiniciar desarrollo o recompilar producción después de cambiar el número.
 
+Los enlaces a redes sociales (LinkedIn, Instagram y TikTok) se cambian en un solo lugar: el arreglo `socialLinks` de `src/lib/contact.ts`. Desde ahí se alimentan los íconos del footer (el único lugar de la página donde aparecen) y el campo `sameAs` del JSON-LD `Organization` en `src/app/layout.tsx`. Si se agrega una red nueva, asignarle su ícono en `socialIcons` (`src/components/OddlyLanding.tsx`) y su etiqueta accesible «Oddly en …» en `src/lib/i18n.ts`.
+
+El botón flotante de WhatsApp (`src/components/FloatingWhatsApp.tsx`) usa el mismo enlace y mensaje traducido que los demás botones. No se muestra si el número no es válido. Aparece cuando el botón «Contáctanos» del hero sale por arriba de la pantalla y se oculta mientras la sección `#contacto` o el footer están visibles, porque ahí ya hay un CTA. En móvil también se oculta mientras la tarjeta fija del proceso ocupa la pantalla, para no tapar su texto. Tampoco aparece durante la intro de carga. Entra con un fundido y una leve subida (sin animación con movimiento reducido). Mide 56 px en móvil y 52 px en escritorio, respeta el área segura inferior y queda por debajo del header, el menú móvil y el selector de idioma.
+
 Al desplegar, configurar también `NEXT_PUBLIC_SITE_URL` con la URL pública para que las imágenes de Open Graph y Twitter apunten al dominio correcto. En desarrollo se usa `http://localhost:3000`.
 
 ## Comprobaciones y producción
@@ -47,6 +51,19 @@ La landing se despliega con SSR en AWS Amplify Hosting (la ruta `/` es dinámica
 6. Conectar el dominio propio en *Hosting → Custom domains*. Amplify emite y renueva el certificado SSL gratis. Después, actualizar `NEXT_PUBLIC_SITE_URL` con ese dominio y redeployar.
 
 Checklist detallado en [DEPLOY.md](DEPLOY.md).
+
+## Seguridad
+
+`next.config.mjs` envía estas cabeceras en todas las rutas y desactiva `X-Powered-By` (`poweredByHeader: false`):
+
+- `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=()`
+- `Content-Security-Policy`: solo recursos del propio dominio (`'self'`), imágenes también desde `data:` y `blob:`, sin iframes que muestren la página (`frame-ancestors 'none'`) y sin `<object>`. `script-src` y `style-src` permiten `'unsafe-inline'` por los scripts en línea de `src/app/layout.tsx` (tema, intro y JSON-LD) y los estilos en línea. En desarrollo se añade `'unsafe-eval'` para el hot reload.
+
+Si se agrega un script o servicio externo (Google Analytics, Meta Pixel, un chat, un video embebido, fuentes externas, etc.), hay que permitir su dominio en la directiva correspondiente de la CSP (`script-src`, `connect-src`, `img-src`, `frame-src`…) en `next.config.mjs`; si no, el navegador lo bloqueará.
 
 ## Diseño y assets
 
