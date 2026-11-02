@@ -89,6 +89,8 @@ const translations = [
   ['Conversemos por WhatsApp', 'Talk to us on WhatsApp', 'Converse conosco pelo WhatsApp'],
   ['WhatsApp no disponible', 'WhatsApp unavailable', 'WhatsApp indisponível'],
   ['Nuestro canal de contacto estará disponible próximamente.', 'Our contact channel will be available soon.', 'Nosso canal de contato estará disponível em breve.'],
+  ['Oddly en LinkedIn', 'Oddly on LinkedIn', 'Oddly no LinkedIn'], ['Oddly en Instagram', 'Oddly on Instagram', 'Oddly no Instagram'], ['Oddly en TikTok', 'Oddly on TikTok', 'Oddly no TikTok'],
+  ['También estamos en', 'You can also find us on', 'Também estamos em'], ['Redes sociales de Oddly', 'Oddly on social media', 'Redes sociais da Oddly'],
   ['Oddly, volver al inicio', 'Oddly, back to top', 'Oddly, voltar ao início'], ['Una estrategia pensada para tu negocio.', 'A strategy designed for your business.', 'Uma estratégia pensada para seu negócio.'], ['Volver arriba', 'Back to top', 'Voltar ao topo'],
   ['Tu negocio, clientes, mercado y canales se conectan en una evaluación para definir tu estrategia.', 'Your business, customers, market, and channels come together in an assessment to define your strategy.', 'Seu negócio, clientes, mercado e canais se conectam em uma avaliação para definir sua estratégia.'],
   ['Tu negocio', 'Your business', 'Seu negócio'], ['Tus clientes', 'Your customers', 'Seus clientes'], ['Tu mercado', 'Your market', 'Seu mercado'], ['Tus canales', 'Your channels', 'Seus canais'],

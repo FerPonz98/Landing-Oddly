@@ -128,7 +128,7 @@ h3 { font-size:20px; line-height:1.4; letter-spacing:-.02em; }
 .contact__action { justify-self:end; max-width:290px; }
 .contact__channel { display:flex; align-items:center; gap:9px; margin-top:16px; font-size:12px; color:var(--muted); }
 .contact .contact__notice { font-size:12px; margin-top:14px; }
-.footer { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:50px; padding-block:24px 30px; border-top:1px solid var(--line); }
+.footer { display:grid; grid-template-columns:auto 1fr auto auto; align-items:center; gap:50px; padding-block:24px 30px; border-top:1px solid var(--line); }
 .brand-symbol { display:block; width:56px; aspect-ratio:360/267; background:var(--foreground); -webkit-mask:url(/brand/oddly-symbol.webp) center/contain no-repeat; mask:url(/brand/oddly-symbol.webp) center/contain no-repeat; transition:background-color 200ms ease; }
 .footer p { font-size:13px; }
 .footer small { grid-column:1/-1; border-top:1px solid var(--line); padding-top:22px; font-size:12px; color:var(--muted); }
@@ -406,3 +406,21 @@ html[data-intro]:not([data-intro='edges']) .strategy-visual { visibility:hidden;
 }
 @media (max-width:860px) and (max-height:700px) { .process-stage__copy p { display:none; } }
 @media (prefers-reduced-motion:reduce) { .process-stage__number span,.process-step { transition:none; } .process-stage__copy { animation:none; } }
+
+/* Redes sociales: footer con el formato de .icon-button y una versión discreta en contacto. */
+.social-links { display:flex; align-items:center; list-style:none; margin:0; padding:0; }
+.social-links a { display:grid; place-items:center; width:44px; height:44px; border-radius:50%; color:var(--foreground); transition:color 160ms ease,border-color 160ms ease,background 160ms ease; }
+.social-links--footer { gap:10px; }
+.social-links--footer a { border:1px solid var(--line); }
+.social-links--compact a { color:var(--muted); }
+.social-links a:focus-visible { color:var(--accent); }
+.contact__social { display:flex; flex-wrap:wrap; align-items:center; column-gap:6px; margin-top:14px; font-size:12px; color:var(--muted); }
+.contact__social .social-links { margin-left:-6px; }
+@media (hover:hover) and (pointer:fine) {
+  .social-links a:hover { color:var(--accent); }
+  .social-links--footer a:hover { border-color:var(--accent); background:var(--surface); }
+}
+@media (max-width:700px) {
+  .footer > .social-links { grid-column:1/-1; grid-row:3; }
+}
+@media (prefers-reduced-motion:reduce) { .social-links a { transition:none; } }
