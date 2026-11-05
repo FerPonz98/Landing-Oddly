@@ -11,3 +11,14 @@ export function getWhatsAppHref(
   if (!/^\d{8,15}$/.test(number)) return undefined;
   return `https://wa.me/${number}?text=${encodeURIComponent(getTranslator(locale)(whatsappMessage))}`;
 }
+
+// Redes sociales de Oddly: cambiar aquí las URLs actualiza los íconos del footer, del menú móvil y el JSON-LD.
+export const socialLinks = [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/oddly-marketing-a51223448/",
+  },
+  { name: "Instagram", href: "https://www.instagram.com/oddly_bo/" },
+  { name: "TikTok", href: "https://www.tiktok.com/@oddly_bo" },
+] as const;
+export type SocialNetwork = (typeof socialLinks)[number]["name"];
