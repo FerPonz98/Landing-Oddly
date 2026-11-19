@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { ArrowUpRight, CreditCard, GlobeSimple, InstagramLogo, LinkedinLogo, ListChecks, TiktokLogo, WhatsappLogo } from '@phosphor-icons/react/dist/ssr';
 import type { Icon } from '@phosphor-icons/react';
-import { diagnosticFormUrl, getWhatsAppHref, miTarjetaUrl, oddlyWhatsAppNumber, socialLinks, type SocialNetwork } from '@/lib/contact';
+import { diagnosticFormUrl, getWhatsAppHref, miTarjetaUrl, oddlyWhatsAppNumber, showMiTarjeta, socialLinks, type SocialNetwork } from '@/lib/contact';
 import { getTranslator, type Locale } from '@/lib/i18n';
 import { siteUrl } from '@/lib/site';
 import LanguageSelect from './LanguageSelect';
@@ -24,7 +24,7 @@ export default function LinksPage({ locale }: { locale: Locale }) {
     ...socialOrder.map(name => ({ href: socialLinks.find(link => link.name === name)!.href, label: name, accessibleName: t(`Oddly en ${name}`), icon: socialIcons[name], external: true })),
     // Same site: it opens in the same tab, and the landing keeps the language chosen here (oddly-language cookie).
     { href: siteUrl.href, label: t('Sitio web'), icon: GlobeSimple },
-    { href: miTarjetaUrl, label: t('Mi Tarjeta: nuestra app de fidelización'), icon: CreditCard, external: true },
+    ...(showMiTarjeta ? [{ href: miTarjetaUrl, label: t('Mi Tarjeta: nuestra app de fidelización'), icon: CreditCard, external: true }] : []),
   ];
   return <div className="links-page">
     <div className="links-toolbar"><LanguageSelect locale={locale} path="/links" /><ThemeToggle locale={locale} /></div>

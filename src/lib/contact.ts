@@ -6,6 +6,8 @@ export const oddlyWhatsAppNumber = "59177351263";
 export const diagnosticFormUrl = "https://forms.gle/5rAr6CQv9zEtypii7";
 // App de fidelización Mi Tarjeta.
 export const miTarjetaUrl = "https://mitarjeta.oddly.com.bo";
+// Mostrar el botón de Mi Tarjeta en /links: cambiar a true para volver a mostrarlo.
+export const showMiTarjeta = false;
 
 export function getWhatsAppHref(
   rawNumber?: string,
