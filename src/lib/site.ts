@@ -6,4 +6,9 @@ export const siteUrl = new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://local
 
 // Absolute URL of each language version. Built by hand because Next's metadata `alternates` drops the query
 // string when the path is `/`, which would collapse ?lang=es|en|pt into one URL.
-export const localeUrl = (locale: Locale) => new URL(`/?lang=${locale}`, siteUrl).href;
+export const localeUrl = (locale: Locale, path = '/') => new URL(`${path}?lang=${locale}`, siteUrl).href;
+
+// Pages that read the language (middleware) and get their own canonical and hreflang links (layout).
+export const localizedPaths = ['/', '/links'] as const;
+export type LocalizedPath = typeof localizedPaths[number];
+export const isLocalizedPath = (path: unknown): path is LocalizedPath => localizedPaths.includes(path as LocalizedPath);

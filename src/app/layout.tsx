@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { locales, resolveLocale } from '@/lib/i18n';
 import { socialLinks } from '@/lib/contact';
-import { localeUrl, siteUrl } from '@/lib/site';
+import { isLocalizedPath, localeUrl, siteUrl } from '@/lib/site';
 import { Barlow, Merienda } from 'next/font/google';
 import './globals.css';
 const barlow = Barlow({ subsets: ['latin', 'latin-ext'], weight: ['400', '500', '600', '700'], variable: '--font-barlow', display: 'swap' });
@@ -17,10 +17,14 @@ export const metadata: Metadata = {
 // Organization JSON-LD so search engines link the social profiles to the brand. `<` is escaped to keep the JSON inert inside <script>.
 const organizationJsonLd = JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Oddly', url: siteUrl.href, sameAs: socialLinks.map(link => link.href) }).replace(/</g, '\\u003c');
 const themeScript = `(function(){try{var t=localStorage.getItem('oddly-theme');document.documentElement.dataset.theme=t==='dark'?'dark':'light'}catch(e){document.documentElement.dataset.theme='light'}})()`;
-// The loading intro plays on a regular visit; deep links, reduced motion and language switches open the page directly.
-// If the intro never starts, the page shows itself after 6s.
-const introScript = `(function(){var d=document.documentElement,skip=false;try{skip=sessionStorage.getItem('oddly-intro')==='skip';sessionStorage.removeItem('oddly-intro')}catch(e){}if(skip||location.hash||matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.dataset.intro='pending';try{history.scrollRestoration='manual'}catch(e){}setTimeout(function(){if(d.dataset.intro==='pending')delete d.dataset.intro},6000)})()`;
+// The loading intro plays on a regular visit to the home; deep links, reduced motion and language switches open the page directly.
+// If the intro never starts, the page shows itself after 6s. /links only draws its isotype (data-links-intro), shown as is after 3s.
+const introScript = `(function(){var d=document.documentElement,skip=false,p=location.pathname;try{skip=sessionStorage.getItem('oddly-intro')==='skip';sessionStorage.removeItem('oddly-intro')}catch(e){}if(skip||matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(p==='/links'){d.dataset.linksIntro='pending';setTimeout(function(){delete d.dataset.linksIntro},3000);return}if(p!=='/'||location.hash)return;d.dataset.intro='pending';try{history.scrollRestoration='manual'}catch(e){}setTimeout(function(){if(d.dataset.intro==='pending')delete d.dataset.intro},6000)})()`;
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const locale = resolveLocale((await headers()).get('x-oddly-locale'));
-  return <html lang={locale} data-theme="light" className={`${barlow.variable} ${merienda.variable}`} suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: themeScript }} /><script dangerouslySetInnerHTML={{ __html: introScript }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationJsonLd }} /><link rel="canonical" href={localeUrl(locale)} />{locales.map(code => <link key={code} rel="alternate" hrefLang={code} href={localeUrl(code)} />)}<link rel="alternate" hrefLang="x-default" href={localeUrl('es')} /></head><body>{children}</body></html>;
+  const requestHeaders = await headers();
+  const locale = resolveLocale(requestHeaders.get('x-oddly-locale'));
+  // Canonical and hreflang links only for the localized pages; the path comes from the middleware.
+  const path = requestHeaders.get('x-oddly-path');
+  const localizedPath = isLocalizedPath(path) ? path : null;
+  return <html lang={locale} data-theme="light" className={`${barlow.variable} ${merienda.variable}`} suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: themeScript }} /><script dangerouslySetInnerHTML={{ __html: introScript }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationJsonLd }} />{localizedPath && <><link rel="canonical" href={localeUrl(locale, localizedPath)} />{locales.map(code => <link key={code} rel="alternate" hrefLang={code} href={localeUrl(code, localizedPath)} />)}<link rel="alternate" hrefLang="x-default" href={localeUrl('es', localizedPath)} /></>}</head><body>{children}</body></html>;
 }

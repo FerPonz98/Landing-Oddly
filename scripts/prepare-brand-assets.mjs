@@ -32,4 +32,13 @@ for (const [name, size] of [['icon', 64], ['apple-icon', 180]]) {
 const logo = await sharp(await artwork(sources.dark)).resize({ width: 500 }).png().toBuffer();
 await sharp({ create: { width: 1200, height: 630, channels: 4, background: '#fffdf9' } })
   .composite([{ input: logo, gravity: 'centre' }]).png().toFile('src/app/opengraph-image.png');
+// /links social preview: the isotype in the accent colour over the wordmark, on the landing's light background.
+const accentMark = await sharp({ create: { width: 260, height: 193, channels: 4, background: '#c9450b' } })
+  .composite([{ input: await sharp(symbol).resize(260, 193, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer(), blend: 'dest-in' }]).png().toBuffer();
+const linksLogo = await sharp(await artwork(sources.dark)).resize({ width: 340 }).png().toBuffer();
+const { height: linksLogoHeight } = await sharp(linksLogo).metadata();
+const linksTop = Math.round((630 - (193 + 36 + linksLogoHeight)) / 2);
+await sharp({ create: { width: 1200, height: 630, channels: 4, background: '#fffdf9' } })
+  .composite([{ input: accentMark, left: 470, top: linksTop }, { input: linksLogo, left: 430, top: linksTop + 193 + 36 }])
+  .png().toFile('src/app/links/opengraph-image.png');
 console.log('Prepared Oddly brand assets from the supplied logos.');

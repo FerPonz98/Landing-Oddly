@@ -96,11 +96,21 @@ const translations = [
   ['Tu negocio, clientes, mercado y canales se conectan en una evaluación para definir tu estrategia.', 'Your business, customers, market, and channels come together in an assessment to define your strategy.', 'Seu negócio, clientes, mercado e canais se conectam em uma avaliação para definir sua estratégia.'],
   ['Tu negocio', 'Your business', 'Seu negócio'], ['Tus clientes', 'Your customers', 'Seus clientes'], ['Tu mercado', 'Your market', 'Seu mercado'], ['Tus canales', 'Your channels', 'Seus canais'],
   ['Una estrategia', 'A strategy', 'Uma estratégia'], ['a tu medida.', 'tailored to you.', 'sob medida.'],
-  ['Hola Oddly, quiero conocer cómo su asesoría de marketing puede ayudar a mejorar las ventas de mi empresa.', 'Hi Oddly, I would like to learn how your marketing advisory service can help improve my business sales.', 'Olá Oddly, gostaria de saber como sua consultoria de marketing pode ajudar a melhorar as vendas da minha empresa.'],
+  ['Hola Oddly, quiero conocer cómo su asesoría de marketing puede ayudar a mejorar las ventas de mi empresa.', 'Hi Oddly, I would like to learn how your marketing advisory service can help improve my business sales.', 'Olá Oddly, gostaria de saber como sua consultoria de marketing pode ajudar a melhorar as vendas da minha empresa'],
   ['Oddly | Consultoría de marketing para mejorar tus ventas', 'Oddly | Marketing consulting to improve your sales', 'Oddly | Consultoria de marketing para melhorar suas vendas'],
   ['Evaluamos tu empresa y recomendamos estrategias de marketing adaptadas a tu negocio para ayudarte a mejorar tus ventas.', 'We evaluate your business and recommend tailored marketing strategies to help improve your sales.', 'Avaliamos sua empresa e recomendamos estratégias de marketing sob medida para ajudar a melhorar suas vendas.'],
   ['Oddly | Marketing pensado para vender mejor', 'Oddly | Marketing designed to sell better', 'Oddly | Marketing pensado para vender mais'],
   ['Asesoría de marketing que empieza por entender tu empresa.', 'Marketing advice that starts with understanding your business.', 'Consultoria de marketing que começa por entender sua empresa.'],
+  // /links
+  ['Oddly | Links', 'Oddly | Links', 'Oddly | Links'],
+  ['Diagnóstico express, WhatsApp, redes sociales y todo Oddly en un solo lugar.', 'Express diagnosis, WhatsApp, social media and all things Oddly in one place.', 'Diagnóstico express, WhatsApp, redes sociais e toda a Oddly em um só lugar.'],
+  ['Marketing pensado para vender mejor', 'Marketing designed to sell better', 'Marketing pensado para vender mais'],
+  ['Enlaces de Oddly', 'Oddly links', 'Links da Oddly'],
+  ['Diagnóstico express', 'Express diagnosis', 'Diagnóstico express'],
+  ['Responde unas preguntas y te decimos por dónde empezar', 'Answer a few questions and we’ll tell you where to start', 'Responda algumas perguntas e diremos por onde começar'],
+  ['Sitio web', 'Website', 'Site'],
+  ['Mi Tarjeta: nuestra app de fidelización', 'Mi Tarjeta: our loyalty app', 'Mi Tarjeta: nosso app de fidelidade'],
+  ['se abre en una pestaña nueva', 'opens in a new tab', 'abre em uma nova aba'],
 ] as const;
 export type Message = typeof translations[number][0];
 const dictionaries = Object.fromEntries(locales.map((locale, index) => [locale, Object.fromEntries(translations.map(row => [row[0], row[index]]))])) as Record<Locale, Record<Message, string>>;

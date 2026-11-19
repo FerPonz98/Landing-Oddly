@@ -4,7 +4,8 @@ import { Check, CaretDown, GlobeSimple } from '@phosphor-icons/react';
 import { getTranslator, languageNames, locales, type Locale, type Message } from '@/lib/i18n';
 const translatedNames: Record<Locale, Message> = { es: 'Español', en: 'Inglés', pt: 'Portugués' };
 
-export default function LanguageSelect({ locale, onOpen }: { locale: Locale; onOpen?: () => void }) {
+// `path` is the page each option links to (used without JavaScript; with it, the current URL keeps its path).
+export default function LanguageSelect({ locale, onOpen, path = '/' }: { locale: Locale; onOpen?: () => void; path?: string }) {
   const t = getTranslator(locale);
   const id = useId();
   const root = useRef<HTMLDetailsElement>(null);
@@ -64,7 +65,7 @@ export default function LanguageSelect({ locale, onOpen }: { locale: Locale; onO
           const index = locales.map((_, offset) => (focused + 1 + offset) % locales.length).find(index => languageNames[locales[index]].toLocaleLowerCase().startsWith(event.key.toLocaleLowerCase()));
           if (index !== undefined) { event.preventDefault(); focusItem(index); }
         }
-      }}>{locales.map((code, index) => <a ref={element => { items.current[index] = element; }} key={code} href={`/?lang=${code}`} hrefLang={code} role="menuitemradio" aria-checked={code === locale} tabIndex={open ? (index === focused ? 0 : -1) : 0} className="language-option" onFocus={() => setFocused(index)} onClick={event => {
+      }}>{locales.map((code, index) => <a ref={element => { items.current[index] = element; }} key={code} href={`${path}?lang=${code}`} hrefLang={code} role="menuitemradio" aria-checked={code === locale} tabIndex={open ? (index === focused ? 0 : -1) : 0} className="language-option" onFocus={() => setFocused(index)} onClick={event => {
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         event.preventDefault();
         if (code === locale) { close(true); return; }
