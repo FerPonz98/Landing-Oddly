@@ -1,6 +1,6 @@
 'use client';
 import { getTranslator, type Locale } from '@/lib/i18n';
-import { ISO } from '@/lib/isotype';
+import { ISO, clamp, easeInOut, easeOut, isotypePen } from '@/lib/isotype';
 import { useEffect, useRef } from 'react';
 
 // The hero stage is 600 × 560 and the isotype fills 300 × 222 of it.
@@ -18,9 +18,6 @@ const EDGES = [
 const TRACE = 2.4, FILL = .5, FLY = 3.1, FLIGHT = 1.1, REVEAL = 1.2, SETTLE = 1.9;
 // Afterwards each edge keeps sending three beads out of the isotype to its point every 2.4s.
 const PERIOD = 2.4, BEADS = 3;
-const clamp = (n: number) => Math.max(0, Math.min(1, n));
-const easeOut = (n: number) => 1 - Math.pow(1 - clamp(n), 3);
-const easeInOut = (n: number) => { n = clamp(n); return n < .5 ? 4 * n * n * n : 1 - Math.pow(-2 * n + 2, 3) / 2; };
 const edgeStart = (i: number) => EDGES[i].out ? .45 : i * .12;
 
 // The loading screen is a single pen-drawn isotype, centred over the hidden page; it then flies onto the hero's own isotype.
@@ -32,18 +29,10 @@ function startIntro(stage: SVGSVGElement) {
   document.body.append(overlay);
   const mark = overlay.querySelector('svg')!;
   const [fill, ink] = Array.from(overlay.querySelectorAll('path'));
-  const nib = overlay.querySelector('circle')!;
-  const length = ink.getTotalLength();
-  ink.style.strokeDasharray = `${length} ${length}`;
+  const pen = isotypePen({ ink, fill, nib: overlay.querySelector('circle')! });
   let flight: { x: number; y: number; scale: number } | null = null;
   const step = (time: number) => {
-    const drawn = easeInOut(Math.min(time, FLY) / TRACE), head = ink.getPointAtLength(drawn * length), filled = easeOut((time - TRACE) / FILL);
-    ink.style.strokeDashoffset = String(length * (1 - drawn));
-    // The pen leaves a slight calligraphic swell in the stroke.
-    ink.style.strokeWidth = String(4 + 2.4 * Math.abs(Math.sin(drawn * 38)));
-    nib.setAttribute('cx', String(head.x)); nib.setAttribute('cy', String(head.y));
-    nib.style.opacity = drawn > 0 && drawn < 1 ? '1' : '0';
-    fill.style.opacity = String(filled); ink.style.opacity = String(1 - filled);
+    pen(easeInOut(Math.min(time, FLY) / TRACE), easeOut((time - TRACE) / FILL));
     if (time < FLY) return;
     // The flight ends exactly over the hero's own isotype, which then takes its place.
     if (!flight) {

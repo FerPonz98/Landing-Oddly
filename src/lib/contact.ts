@@ -2,6 +2,12 @@ import { getTranslator, type Locale } from "./i18n";
 export const whatsappMessage =
   "Hola Oddly, quiero conocer cómo su asesoría de marketing puede ayudar a mejorar las ventas de mi empresa.";
 export const oddlyWhatsAppNumber = "59177351263";
+// Formulario del Diagnóstico express (Google Forms): cambiar aquí el enlace actualiza /links.
+export const diagnosticFormUrl = "https://forms.gle/5rAr6CQv9zEtypii7";
+// App de fidelización Mi Tarjeta.
+export const miTarjetaUrl = "https://mitarjeta.oddly.com.bo";
+// Mostrar el botón de Mi Tarjeta en /links: cambiar a true para volver a mostrarlo.
+export const showMiTarjeta = false;
 
 export function getWhatsAppHref(
   rawNumber?: string,

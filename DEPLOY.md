@@ -65,7 +65,7 @@ En **DNS → Records**:
 En **Environment** del servicio:
 
 ```env
-NEXT_PUBLIC_WHATSAPP_NUMBER=59167443300
+NEXT_PUBLIC_WHATSAPP_NUMBER=59177351263
 NEXT_PUBLIC_SITE_URL=https://oddly.com.bo
 NIXPACKS_NODE_VERSION=20
 ```
@@ -128,7 +128,7 @@ La app envía `Strict-Transport-Security` con `includeSubDomains`: cualquier sub
 - [ ] `https://www.oddly.com.bo` carga o redirige al dominio principal.
 - [ ] `/?lang=en` y `/?lang=pt` muestran la página en inglés y portugués; el selector de idioma funciona.
 - [ ] Cambio de tema claro/oscuro, intro de carga, animaciones y botón flotante de WhatsApp funcionan; la consola del navegador no muestra errores de CSP.
-- [ ] Los botones de WhatsApp abren el chat con +591 67443300 y el mensaje en el idioma de la página.
+- [ ] Los botones de WhatsApp abren el chat con +591 77351263 y el mensaje en el idioma de la página.
 - [ ] Los íconos de LinkedIn, Instagram y TikTok (footer y menú móvil) abren los perfiles en otra pestaña.
 - [ ] Cabeceras de seguridad presentes y sin `X-Powered-By`:
 

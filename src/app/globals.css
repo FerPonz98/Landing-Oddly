@@ -420,3 +420,55 @@ html[data-intro] .floating-whatsapp { visibility:hidden; opacity:0; pointer-even
 }
 @media (hover:hover) and (pointer:fine) { .floating-whatsapp:hover { translate:0 -2px; } }
 @media (prefers-reduced-motion:reduce) { .floating-whatsapp,.floating-whatsapp[data-visible='true'] { transition:none; translate:none; } .floating-whatsapp:hover { translate:none; } }
+
+/* /links: link-in-bio page. One centred column, built for phones first; no landing header, footer or floating button. */
+.links-page { min-height:100svh; display:flex; flex-direction:column; }
+.links-toolbar { display:flex; justify-content:flex-end; align-items:center; gap:8px; width:min(100% - 32px,480px); margin-inline:auto; padding-top:14px; }
+.links { flex:1; display:flex; flex-direction:column; justify-content:center; width:min(100% - 32px,480px); margin-inline:auto; padding-block:4px 24px; }
+.links__header { display:grid; justify-items:center; gap:10px; margin-bottom:28px; text-align:center; animation:links-enter 500ms var(--ease-out) both; }
+.links-mark { width:96px; aspect-ratio:720/533; overflow:visible; }
+.links-mark__fill { fill:var(--foreground); }
+.links-mark__ink { fill:none; stroke:var(--foreground); stroke-linejoin:round; stroke-linecap:round; opacity:0; }
+.links-mark__nib { fill:var(--accent); opacity:0; }
+html[data-links-intro] .links-mark__fill { opacity:0; }
+.links__title { line-height:0; }
+.brand-logo--links { width:120px; height:84px; }
+.links__tagline { color:var(--foreground); font-family:var(--font-merienda),cursive; font-size:16px; line-height:1.5; letter-spacing:-.01em; }
+.links__list { display:grid; gap:12px; list-style:none; margin:0; padding:0; }
+.links__list > li { animation:links-enter 500ms var(--ease-out) both; animation-delay:calc(120ms + var(--i,0) * 45ms); }
+.links__button { display:flex; align-items:center; gap:14px; min-height:60px; padding:10px 16px 10px 10px; border:1px solid var(--line); background:var(--background); color:var(--foreground); font-size:16px; font-weight:600; line-height:1.3; transition:transform 140ms var(--ease-out),background-color 160ms ease,border-color 160ms ease; }
+.links__icon { display:grid; place-items:center; flex-shrink:0; width:40px; height:40px; border-radius:50%; background:var(--surface); color:var(--accent); transition:transform 220ms var(--ease-out); }
+.links__text { flex:1; display:grid; gap:3px; min-width:0; }
+.links__note { color:var(--muted); font-size:13px; font-weight:400; line-height:1.4; }
+.links__arrow { flex-shrink:0; color:var(--muted); transition:transform 220ms var(--ease-out); }
+.links__button--featured { min-height:80px; padding-block:14px; background:var(--accent); border-color:transparent; color:var(--button-text); font-size:17px; }
+.links__button--featured .links__icon { width:44px; height:44px; background:color-mix(in srgb,var(--button-text) 18%,transparent); color:var(--button-text); }
+.links__button--featured .links__note,.links__button--featured .links__arrow { color:color-mix(in srgb,var(--button-text) 85%,transparent); }
+.links__button:focus-visible { outline-offset:3px; }
+.links__button--featured:focus-visible { outline-color:var(--foreground); }
+/* Tap: the button presses in and its icon gives a small nudge. */
+.links__button:active { transform:scale(.97); background:var(--surface); }
+.links__button--featured:active { background:color-mix(in srgb,var(--accent) 88%,var(--foreground)); }
+.links__button:active .links__icon { transform:scale(.9) rotate(-8deg); }
+.links__footer { padding:12px 16px 24px; text-align:center; }
+.links__footer small { color:var(--muted); font-size:12px; }
+.links__footer a { display:inline-block; padding-block:12px; text-decoration:underline; text-decoration-color:var(--line); transition:color 160ms ease; }
+@keyframes links-enter { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+@media (hover:hover) and (pointer:fine) {
+  .links__button:hover { border-color:var(--foreground); }
+  .links__button--featured:hover { border-color:transparent; background:color-mix(in srgb,var(--accent) 90%,var(--foreground)); }
+  .links__button:hover .links__arrow { transform:translate(2px,-2px); }
+  .links__footer a:hover { color:var(--accent); }
+}
+/* The language panel opens under the toolbar instead of under the landing header. */
+@media (max-width:700px) { .links-toolbar .language-panel { top:68px; left:16px; right:16px; } }
+@media (min-width:701px) {
+  .links { padding-block:24px 40px; }
+  .links-mark { width:112px; }
+  .links__tagline { font-size:17px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .links__header,.links__list > li { animation:none; }
+  .links__button,.links__icon,.links__arrow { transition:none; }
+  .links__button:active .links__icon { transform:none; }
+}
